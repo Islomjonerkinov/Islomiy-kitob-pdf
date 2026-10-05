@@ -1,0 +1,285 @@
+[05.10.2026 17:38] bekzod: <!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurli Hidayat - Ma'rifat Portali</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-50 text-stone-800 dark:bg-emerald-950 dark:text-stone-100 min-h-screen flex flex-col islamic-bg relative overflow-x-hidden selection:bg-gold-500 selection:text-emerald-950">
+
+    <div id="pageModal" class="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white dark:bg-emerald-900 border border-gold-500/40 p-8 rounded-3xl max-w-md w-full mx-4 shadow-2xl text-center relative transform scale-95 transition-transform duration-300" id="modalBox">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-100 dark:bg-emerald-950 text-stone-400 hover:text-gold-500 flex items-center justify-center transition">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="w-20 h-20 bg-gold-500/10 text-gold-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-5 border border-gold-500/30 shadow-inner">
+                <i id="modalIcon" class="fas fa-book-bookmark"></i>
+            </div>
+
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2 gold-gradient-text">Dastur Sahifasi</h3>
+            <p id="modalDesc" class="text-stone-600 dark:text-stone-300 mb-6 text-sm leading-relaxed">Ushbu bo'lim sahifasi tez orada ishga tushadi. Kundaligingizni yuritish uchun tayyor turing!</p>
+            
+            <div class="w-full bg-stone-200 dark:bg-emerald-950 h-2 rounded-full overflow-hidden mb-6">
+                <div class="bg-gradient-to-r from-gold-600 to-gold-400 h-full w-2/3 animate-pulse"></div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full py-3.5 gold-gradient-btn text-emerald-950 font-bold rounded-xl hover:brightness-105 transition shadow-lg text-sm uppercase tracking-wider">
+                Tushunarli
+            </button>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-white/80 dark:bg-emerald-950/80 backdrop-blur-md border-b border-gold-500/20 px-4 lg:px-12 py-3.5 transition-colors">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-gold-600 via-gold-500 to-gold-300 flex items-center justify-center text-emerald-950 font-bold text-xl shadow-md border border-gold-300/50">
+                    <i class="fas fa-star-and-crescent"></i>
+                </div>
+                <div>
+                    <h1 class="font-black text-xl tracking-wider gold-gradient-text leading-none">NURLI HIDAYAT</h1>
+                    <p class="text-[10px] font-semibold text-stone-500 dark:text-gold-300/70 tracking-widest mt-1">RUHIY KAMOLOT WA DAFTARLAR PORTALI</p>
+                </div>
+            </div>
+[05.10.2026 17:38] bekzod: <div class="flex items-center gap-3">
+                <div class="relative hidden sm:block w-52 md:w-72">
+                    <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="Daftar yoki dasturni qidirish..." 
+                        class="w-full pl-10 pr-4 py-2 text-sm rounded-full bg-stone-100 dark:bg-emerald-900/60 border border-stone-200 dark:border-emerald-800/80 text-stone-800 dark:text-stone-100 focus:outline-none focus:border-gold-500 transition shadow-inner">
+                    <i class="fas fa-search absolute left-3.5 top-2.5 text-stone-400 text-sm"></i>
+                </div>
+
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-emerald-900/80 text-gold-500 hover:bg-gold-500/10 border border-stone-200 dark:border-emerald-700/50 flex items-center justify-center transition shadow-sm" title="Mavzuni o'zgartirish">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+
+                <button id="audioBtn" onclick="toggleAudio()" class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-emerald-900/80 text-emerald-700 dark:text-gold-400 hover:bg-gold-500/10 border border-stone-200 dark:border-emerald-700/50 flex items-center justify-center transition shadow-sm" title="Sura Qiroati">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-8 pb-10 px-4 lg:px-12 max-w-7xl mx-auto w-full">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-3xl pointer-events-none ambient-glow"></div>
+
+        <div class="text-center max-w-3xl mx-auto space-y-4 relative z-10">
+            <div class="py-1">
+                <span class="font-arabic text-3xl sm:text-5xl text-gold-600 dark:text-gold-400 leading-relaxed drop-shadow-sm">
+                    بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+                </span>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white leading-tight">
+                Qalb Intizomi va <span class="gold-gradient-text">Ruhiy Amallar</span> Daftari
+            </h2>
+            
+            <p class="text-stone-600 dark:text-emerald-100/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Kunlik istig'for, Tahajjud, Voqea surasi hamda Asmaul Husna zikrlari bilan qalbingizga orom va baraka ulashing.
+            </p>
+
+            <div class="inline-flex flex-wrap items-center justify-center gap-4 px-6 py-2.5 rounded-2xl bg-white/80 dark:bg-emerald-900/60 border border-gold-500/30 shadow-lg backdrop-blur-md mt-2">
+                <div class="flex items-center gap-2 text-stone-700 dark:text-gold-300 text-sm font-bold">
+                    <i class="far fa-clock text-gold-500"></i>
+                    <span id="currentTime">00:00:00</span>
+                </div>
+                <div class="h-4 w-px bg-stone-300 dark:bg-emerald-700"></div>
+                <div class="flex items-center gap-2 text-stone-700 dark:text-emerald-100 text-sm font-medium">
+                    <i class="far fa-calendar-alt text-gold-500"></i>
+                    <span id="hijriDate">Hijriy 1448-yil</span>
+                </div>
+            </div>
+        </div>
+[05.10.2026 17:38] bekzod: <!-- Prayer Times & Interactive Tasbeeh Bar -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 relative z-10">
+            
+            <!-- Prayer Times Widget -->
+            <div class="md:col-span-2 p-6 rounded-3xl bg-gradient-to-br from-emerald-900 to-emerald-950 text-white border border-gold-500/30 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-mosque text-gold-400 text-xl"></i>
+                        <h3 class="font-bold text-lg text-gold-100">Kunlik Namoz Vaqtlari</h3>
+                    </div>
+                    <span class="text-xs px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 font-semibold border border-gold-500/30">Toshkent vaqti</span>
+                </div>
+
+                <div class="grid grid-cols-5 gap-2 sm:gap-4 my-2 text-center">
+                    <div class="p-2 sm:p-3 rounded-2xl bg-emerald-800/40 border border-emerald-700/50">
+                        <span class="block text-[11px] text-emerald-300 font-medium mb-1">Bamdod</span>
+                        <span class="text-sm sm:text-base font-bold text-gold-300">05:04</span>
+                    </div>
+                    <div class="p-2 sm:p-3 rounded-2xl bg-emerald-800/40 border border-emerald-700/50">
+                        <span class="block text-[11px] text-emerald-300 font-medium mb-1">Peshin</span>
+                        <span class="text-sm sm:text-base font-bold text-gold-300">12:22</span>
+                    </div>
+                    <div class="p-2 sm:p-3 rounded-2xl bg-emerald-800/40 border border-emerald-700/50">
+                        <span class="block text-[11px] text-emerald-300 font-medium mb-1">Asr</span>
+                        <span class="text-sm sm:text-base font-bold text-gold-300">16:38</span>
+                    </div>
+                    <div class="p-2 sm:p-3 rounded-2xl bg-emerald-800/40 border border-emerald-700/50 bg-gold-500/10 border-gold-500/40">
+                        <span class="block text-[11px] text-gold-300 font-bold mb-1">Shom</span>
+                        <span class="text-sm sm:text-base font-extrabold text-white">18:15</span>
+                    </div>
+                    <div class="p-2 sm:p-3 rounded-2xl bg-emerald-800/40 border border-emerald-700/50">
+                        <span class="block text-[11px] text-emerald-300 font-medium mb-1">Xufton</span>
+                        <span class="text-sm sm:text-base font-bold text-gold-300">19:30</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-emerald-800/60 flex items-center justify-between text-xs text-emerald-200">
+                    <span class="italic"><i class="fas fa-heart text-gold-400 mr-1"></i> "Namoz mo'minning me'rojidir."</span>
+                    <span class="text-gold-400 font-semibold">Keyingi vaqt: Xufton</span>
+                </div>
+            </div>
+
+            <!-- Digital Tasbeeh Widget -->
+            <div class="p-6 rounded-3xl bg-white dark:bg-emerald-900/70 border border-gold-500/30 shadow-xl flex flex-col justify-between text-center relative">
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-xs uppercase font-extrabold tracking-wider text-emerald-800 dark:text-gold-400">Raqamli Tasbeh</span>
+                        <button onclick="resetTasbih()" class="text-xs text-stone-400 hover:text-red-400 transition" title="Tozalash">
+                            <i class="fas fa-rotate-right"></i>
+                        </button>
+                    </div>
+                    <p id="phraseDisplay" class="text-sm font-semibold text-stone-700 dark:text-stone-200">Astagfirullah al-Azim</p>
+                    <div class="text-4xl font-black gold-gradient-text my-2 tracking-wider" id="tasbihCount">0</div>
+                </div>
+[05.10.2026 17:38] bekzod: <button onclick="countTasbih()" class="w-full py-3 gold-gradient-btn text-emerald-950 font-bold rounded-2xl shadow-lg hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2">
+                    <i class="fas fa-fingerprint text-xl"></i>
+                    <span>Zikr Qilish</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 lg:px-12 py-6 max-w-7xl mx-auto w-full flex-grow">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h3 class="text-2xl font-bold text-stone-900 dark:text-white">Maxsus Dasturlar va Daftarlar</h3>
+                <p class="text-sm text-stone-500 dark:text-stone-400">Kerakli kundalikni tanlang va ruhiy tartibingizni boshlang</p>
+            </div>
+            <div class="h-1 flex-grow max-w-xs bg-gradient-to-r from-gold-500/50 to-transparent rounded-full ml-4 hidden sm:block"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsGrid">
+            
+              <a href="40_Ming_istiqfor.html" class="program-card p-6 rounded-3xl border border-gold-500/30 flex flex-col justify-between cursor-pointer group text-inherit no-underline">
+                <div>
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-800 to-emerald-950 text-gold-400 flex items-center justify-center text-2xl group-hover:scale-110 transition shadow-md border border-gold-500/30">
+                            <i class="fas fa-hands-holding-circle"></i>
+                        </div>
+                        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-gold-500/10 text-gold-600 dark:text-gold-400 border border-gold-500/20 uppercase tracking-wider">
+                            40 KUNLIK MARAFON
+                        </span>
+                    </div>  
+                    <h4 class="text-xl font-bold text-stone-900 dark:text-white mb-2 group-hover:text-gold-500 transition">
+                        40 Ming Istig'for Kundaligi
+                    </h4>
+                    <p class="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6">
+                        Kunlik istig'for hisobini yuritish, qalb xotirjamligi va mushkullarni oson qilish uchun maxsus reja.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-stone-200 dark:border-emerald-800/50 flex items-center justify-between text-sm font-semibold text-emerald-800 dark:text-gold-400">
+                    <span>Daftarni ochish</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition"></i>
+                </div>
+            </a>
+
+              <a href="40_Kunlik%20_voqea.html" class="program-card p-6 rounded-3xl border border-gold-500/30 flex flex-col justify-between cursor-pointer group text-inherit no-underline">
+                <div>
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-800 to-emerald-950 text-gold-400 flex items-center justify-center text-2xl group-hover:scale-110 transition shadow-md border border-gold-500/30">
+                            <i class="fas fa-book-quran"></i>
+                        </div>
+                        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-gold-500/10 text-gold-600 dark:text-gold-400 border border-gold-500/20 uppercase tracking-wider">
+                            RIZQ VA BARAKA
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-bold text-stone-900 dark:text-white mb-2 group-hover:text-gold-500 transition">
+                        40 Kunlik Voqea Surasi
+                    </h4>
+                    <p class="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6">
+                        Har kuni Voqea surasini o'qish, audio tinglash hamda 40 kunlik natijalarni belgilab borish moduli.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-stone-200 dark:border-emerald-800/50 flex items-center justify-between text-sm font-semibold text-emerald-800 dark:text-gold-400">
+                    <span>Mutolaani boshlash</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition"></i>
+                </div>
+            </a>
+
+            <!-- Card 4: Allohga Oson -->
+              <a href="Allohga_Oson.html" class="program-card p-6 rounded-3xl border border-gold-500/30 flex flex-col justify-between cursor-pointer group text-inherit no-underline">
+                <div>
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-800 to-emerald-950 text-gold-400 flex items-center justify-center text-2xl group-hover:scale-110 transition shadow-md border border-gold-500/30">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-gold-500/10 text-gold-600 dark:text-gold-400 border border-gold-500/20 uppercase tracking-wider">
+                            TASALLI VA UMID
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-bold text-stone-900 dark:text-white mb-2 group-hover:text-gold-500 transition">
+                        Allohga Oson
+                    </h4>
+                    <p class="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6">
+                        Ilojsizdek tuyulgan har qanday vaziyatda Allohning qudrati va rahmati haqida motivatsion hikoyalar.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-stone-200 dark:border-emerald-800/50 flex items-center justify-between text-sm font-semibold text-emerald-800 dark:text-gold-400">
+                    <span>Eslatmalarni o'qish</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition"></i>
+                </div>
+            </a>
+              <a href="Tahajjud_Daftarim.html" class="program-card p-6 rounded-3xl border border-gold-500/30 flex flex-col justify-between cursor-pointer group md:col-span-2 lg:col-span-1 text-inherit no-underline">
+                <div>
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-800 to-emerald-950 text-gold-400 flex items-center justify-center text-2xl group-hover:scale-110 transition shadow-md border border-gold-500/30">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-gold-500/10 text-gold-600 dark:text-gold-400 border border-gold-500/20 uppercase tracking-wider">
+                            TUNGI IBODAT
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-bold text-stone-900 dark:text-white mb-2 group-hover:text-gold-500 transition">
+                        Tahajjud Daftarim
+                    </h4>
+                    <p class="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-6">
+                        Tungi namoz vaqtlari, shaxsiy iltijolar va qabul bo'lgan duolaringizni qayd etib boruvchi sirli daftar.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-stone-200 dark:border-emerald-800/50 flex items-center justify-between text-sm font-semibold text-emerald-800 dark:text-gold-400">
+                    <span>Daftarga kirish</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition"></i>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer class="mt-auto border-t border-gold-500/20 bg-stone-100 dark:bg-emerald-950/90 py-8 px-4 lg:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-sm font-bold gold-gradient-text">NURLI HIDAYAT PORTALI</p>
+                <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Ezgulik va ruhiy kamolot yo'lida birgamiz.</p>
+            </div>
+            <div class="flex items-center gap-5 text-stone-500 dark:text-gold-400/80 text-lg">
+                <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <audio id="quranAudio" src="https://server8.mp3quran.net/afs/056.mp3" preload="none"></audio>
+
+    
+</body>
+<script src="main.js"></script>
+</html>

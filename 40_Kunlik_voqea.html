@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Kunlik Voqea Surasi - Ruhiy Kundalik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        roseGold: {
+                            50: '#fdf8f6',
+                            100: '#fbeee9',
+                            200: '#f7dcd3',
+                            300: '#f0c2b2',
+                            400: '#e49e89',
+                            500: '#d77c64',
+                            600: '#c25e46',
+                        },
+                        blush: {
+                            50: '#fef6f8',
+                            100: '#fdecf1',
+                            200: '#fcd9e5',
+                            300: '#f7b1cb',
+                            400: '#f07fa8',
+                            500: '#e55387',
+                        },
+                        goldAccent: {
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#d4af37',
+                            600: '#b89228',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #fdf8f6 0%, #fdecf1 50%, #f7dcd3 100%);
+            min-height: 100vh;
+            color: #4a3b37;
+        }
+
+        .gold-border {
+            border: 2px solid #d4af37;
+            box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-border-double {
+            border: 4px double #d4af37;
+        }
+
+        .tulip-bg {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #e55387 0%, #d77c64 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(229, 83, 135, 0.3);
+        }
+
+        .heart-grid-item {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .heart-grid-item.completed {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-color: #047857;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .floating-element {
+            animation: floatEffect 4s ease-in-out infinite;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .print-full { width: 100% !important; margin: 0 !important; }
+        }
+    </style>
+</head>
+<body class="pb-16 selection:bg-roseGold-300 selection:text-white relative">
+
+    <header class="no-print sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-roseGold-200 px-4 py-3 shadow-sm">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blush-400 to-roseGold-500 flex items-center justify-center text-white shadow-md">
+                    <i class="fas fa-book-quran text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-lg text-roseGold-600 leading-tight">40 Kunlik Voqea Surasi</h1>
+                    <p class="text-[11px] text-stone-500 font-medium">Shaxsiy Ruhiy Kundalik Portali</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button onclick="resetAllData()" class="px-3 py-1.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+                    <i class="fas fa-trash-alt"></i> <span class="hidden sm:inline">Tozalash</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pt-6">
+
+        <nav class="no-print flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 pt-2 mb-6 scrollbar-none">
+            <button onclick="switchTab('tab-cover')" id="btn-tab-cover" class="tab-btn active px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2">
+                <i class="fas fa-book-open"></i> Muqova
+            </button>
+            <button onclick="switchTab('tab-tracker')" id="btn-tab-tracker" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-heart text-blush-500"></i> Yurak Treker
+            </button>
+            <button onclick="switchTab('tab-owner')" id="btn-tab-owner" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-user-check"></i> Egasi & Niyat
+            </button>
+            <button onclick="switchTab('tab-guide')" id="btn-tab-guide" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-clipboard-list"></i> Qoida
+            </button>
+            <button onclick="switchTab('tab-surah')" id="btn-tab-surah" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-align-center"></i> Voqea Surasi
+            </button>
+            <button onclick="switchTab('tab-notebook')" id="btn-tab-notebook" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-pen-nib"></i> Bloknot
+            </button>
+            <button onclick="switchTab('tab-dhikr')" id="btn-tab-dhikr" class="tab-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 flex items-center gap-2 bg-white text-stone-600 hover:bg-roseGold-50">
+                <i class="fas fa-hands-praying"></i> Zikrlar
+            </button>
+        </nav>
+
+        <section id="tab-cover" class="tab-content block">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-12 gold-border relative overflow-hidden text-center max-w-2xl mx-auto shadow-2xl">
+                <div class="absolute top-4 left-4 text-goldAccent-500 opacity-60 text-2xl">✿</div>
+                <div class="absolute top-4 right-4 text-goldAccent-500 opacity-60 text-2xl">✿</div>
+                <div class="absolute bottom-4 left-4 text-goldAccent-500 opacity-60 text-2xl">✿</div>
+                <div class="absolute bottom-4 right-4 text-goldAccent-500 opacity-60 text-2xl">✿</div>
+
+                <div class="my-8">
+                    <div class="inline-block p-4 rounded-3xl bg-blush-100/60 mb-6 border border-blush-200 floating-element">
+                        <i class="fas fa-spa text-5xl text-blush-500"></i>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-roseGold-200 via-blush-100 to-roseGold-200 py-6 px-4 rounded-3xl border border-roseGold-300 shadow-inner my-6">
+                        <h2 class="font-serif font-black text-3xl sm:text-5xl text-stone-800 tracking-wider uppercase leading-tight drop-shadow-sm">
+                            40 KUNLIK<br><span class="text-roseGold-600">VOQEA SURASI</span>
+                        </h2>
+                    </div>
+
+                    <p class="text-stone-600 text-sm sm:text-base font-medium max-w-md mx-auto leading-relaxed mt-6 italic">
+                        "Rizq va baraka, qalb sukunati hamda ilohiy rahmatga erishish yo'lidagi 40 kunlik ma'naviy safari."
+                    </p>
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-roseGold-200/60 flex items-center justify-center gap-4">
+                    <button onclick="switchTab('tab-tracker')" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-blush-400 to-roseGold-500 text-white font-bold text-sm shadow-lg hover:brightness-105 transition flex items-center gap-2">
+                        <span>Safarni Boshlash</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-tracker" class="tab-content hidden">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-10 gold-border shadow-xl max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <span class="px-4 py-1.5 rounded-full bg-blush-100 text-blush-500 font-bold text-xs uppercase tracking-widest border border-blush-200">
+                        PROGRESS HARITASI
+                    </span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-800 mt-2">40 Kunlik Ibodat Trekeri</h3>
+                    <p class="text-stone-500 text-sm mt-1">Har bir kun surani tilovat qilganingizdan so'ng tegishli raqam ustiga bosing</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="max-w-md mx-auto mt-6 bg-stone-100 rounded-full h-5 p-1 border border-stone-200 relative overflow-hidden shadow-inner">
+                        <div id="progressBar" class="bg-gradient-to-r from-blush-400 to-emerald-500 h-full rounded-full transition-all duration-500 w-0"></div>
+                        <span id="progressText" class="absolute inset-0 flex items-center justify-center text-[11px] font-extrabold text-stone-700">0 / 40 Kun (0%)</span>
+                    </div>
+                </div>
+
+                <!-- Heart-Shaped Interactive Grid -->
+                <div class="p-4 sm:p-6 rounded-3xl bg-roseGold-50/50 border border-roseGold-200">
+                    <div id="heartGrid" class="grid grid-cols-5 sm:grid-cols-8 gap-2.5 sm:gap-3 justify-items-center">
+                        <!-- Dynamic JavaScript insertion for 40 days -->
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap items-center justify-between text-xs text-stone-500 px-2 gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-md bg-emerald-500 inline-block"></span>
+                        <span>Bajarilgan kunlar</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-md bg-white border border-roseGold-300 inline-block"></span>
+                        <span>Kutilayotgan kunlar</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-owner" class="tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                
+                <!-- Owner Info Card -->
+                <div class="tulip-bg rounded-3xl p-6 sm:p-8 gold-border shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-roseGold-200 pb-4">
+                            <div class="w-10 h-10 rounded-xl bg-goldAccent-400/20 text-goldAccent-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-stone-800">Kundalik Egasi Haqida</h3>
+                        </div>
+
+                        <div class="space-y-4 text-sm">
+                            <div>
+                                <label class="block text-xs font-bold text-stone-600 mb-1">Ismim:</label>
+                                <input type="text" id="ownerName" oninput="saveOwnerData()" placeholder="Ismingizni kiriting..." 
+                                    class="w-full px-4 py-3 rounded-2xl bg-white border border-roseGold-200 focus:outline-none focus:border-roseGold-500 transition shadow-sm font-medium">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-stone-600 mb-1">Boshlangan sana:</label>
+                                <input type="date" id="startDate" onchange="saveOwnerData()" 
+                                    class="w-full px-4 py-3 rounded-2xl bg-white border border-roseGold-200 focus:outline-none focus:border-roseGold-500 transition shadow-sm font-medium">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-stone-600 mb-1">Yakunlanish sanasi:</label>
+                                <input type="date" id="endDate" onchange="saveOwnerData()" 
+                                    class="w-full px-4 py-3 rounded-2xl bg-white border border-roseGold-200 focus:outline-none focus:border-roseGold-500 transition shadow-sm font-medium">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center pt-4 border-t border-roseGold-100">
+                        <i class="fas fa-mosque text-3xl text-emerald-600/40"></i>
+                    </div>
+                </div>
+
+                <!-- Intentions Card -->
+                <div class="tulip-bg rounded-3xl p-6 sm:p-8 gold-border shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6 border-b border-roseGold-200 pb-4">
+                            <div class="w-10 h-10 rounded-xl bg-blush-100 text-blush-500 flex items-center justify-center text-lg">
+                                <i class="fas fa-sparkles"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-stone-800">Mening Niyatim</h3>
+                        </div>
+
+                        <p class="text-xs text-stone-500 mb-3 italic leading-relaxed">
+                            (Bu yerga ushbu 40 kunlik yo'ldan kutayotgan eng asosiy maqsadingizni yozing. Masalan: oilaviy xotirjamlik, rizq barakasi yoki qalb sukunati)
+                        </p>
+
+                        <textarea id="intentionsText" oninput="saveOwnerData()" rows="7" placeholder="Niyatlaringizni shu yerga batafsil yozib qo'ying..." 
+                            class="w-full p-4 rounded-2xl bg-white border border-roseGold-200 focus:outline-none focus:border-roseGold-500 transition shadow-sm text-sm leading-relaxed resize-none"></textarea>
+                    </div>
+
+                    <p class="text-[11px] text-stone-400 text-right mt-2"><i class="fas fa-save mr-1"></i>Avto-saqlanadi</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-guide" class="tab-content hidden">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-10 gold-border shadow-xl max-w-3xl mx-auto">
+                <div class="text-center mb-8">
+                    <div class="w-14 h-14 rounded-2xl bg-goldAccent-400/20 text-goldAccent-600 flex items-center justify-center text-2xl mx-auto mb-3">
+                        <i class="fas fa-book-bookmark"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-stone-800">Daftarni Yuritish Namunasi</h3>
+                    <p class="text-stone-500 text-sm">Ushbu sahifa sizga 40 kunlik ma'naviy safaringizni tartibli tashkil etishda yordam beradi</p>
+                </div>
+
+                <div class="space-y-6 text-sm leading-relaxed">
+                    <!-- Step 1 -->
+                    <div class="p-5 rounded-2xl bg-white border border-roseGold-200 shadow-sm flex gap-4">
+                        <div class="w-8 h-8 rounded-full bg-roseGold-500 text-white flex-shrink-0 flex items-center justify-center font-bold text-sm">1</div>
+                        <div>
+                            <h4 class="font-bold text-stone-800 text-base mb-1">1-qadam: Ko'chirib yozish</h4>
+                            <p class="text-stone-600">Har kuni suraning bir qismini yoki to'liq matnini (imkoniyatingizga qarab) maxsus ajratilgan bloknot bo'limiga ko'chiring.</p>
+                            <div class="mt-2 p-2.5 rounded-xl bg-blush-50 text-blush-600 text-xs font-medium border border-blush-100">
+                                <i class="fas fa-lightbulb mr-1"></i> <strong>Foydasi:</strong> Qo'l harakati orqali qalb tinchlanadi, diqqat jamlanadi va sura so'zlari yadingizda qoladi.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-5 rounded-2xl bg-white border border-roseGold-200 shadow-sm flex gap-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex-shrink-0 flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <h4 class="font-bold text-stone-800 text-base mb-1">2-qadam: Tilovat qilish</h4>
+                            <p class="text-stone-600">Yozib bo'lganingizdan so'ng, o'z qo'lingiz bilan yozgan matningizga qarab, surani ovoz chiqarib, shoshilmasdan o'qing.</p>
+                            <div class="mt-2 p-2.5 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-medium border border-emerald-100">
+                                <i class="fas fa-heart mr-1"></i> <strong>Foydasi:</strong> O'z yozganingizni o'qish sizga o'zgacha zavq va ishonch bag'ishlaydi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="switchTab('tab-surah')" class="px-6 py-3 rounded-2xl bg-stone-800 text-white font-bold text-xs tracking-wider uppercase hover:bg-stone-900 transition shadow-md">
+                        Sura Matnini O'qish <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-surah" class="tab-content hidden">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-10 gold-border shadow-xl max-w-4xl mx-auto">
+                <div class="text-center mb-8 border-b border-roseGold-200 pb-6">
+                    <h3 class="font-serif text-3xl font-bold text-stone-800 mb-2">VOQEA SURASI</h3>
+                    <p class="font-arabic text-2xl text-goldAccent-600 my-2">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+                    <p class="text-xs text-stone-500">Bismillahir Rohmanir Rohiym</p>
+                </div>
+
+                <!-- Surah Transliteration text container -->
+                <div class="space-y-3 text-sm sm:text-base leading-relaxed text-stone-800 bg-white/70 p-6 rounded-2xl border border-roseGold-100 max-h-[600px] overflow-y-auto pr-3">
+                    <p><b class="text-roseGold-600 mr-1">1.</b> Bismillahir Rohmanir Rohiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">2.</b> Iza vaqa'atil vaqi'ah.</p>
+                    <p><b class="text-roseGold-600 mr-1">3.</b> Laysa livaq'atiha kazibah.</p>
+                    <p><b class="text-roseGold-600 mr-1">4.</b> Khofizatur rofi'ah.</p>
+                    <p><b class="text-roseGold-600 mr-1">5.</b> Iza rujjatil ardu rojja.</p>
+                    <p><b class="text-roseGold-600 mr-1">6.</b> Va bussatil jibalu bassa.</p>
+                    <p><b class="text-roseGold-600 mr-1">7.</b> Fakanat haba-am munbassa.</p>
+                    <p><b class="text-roseGold-600 mr-1">8.</b> Va kuntum azvajan salasah.</p>
+                    <p><b class="text-roseGold-600 mr-1">9.</b> Fa-ashabul maymanati maa ashabul maymanah.</p>
+                    <p><b class="text-roseGold-600 mr-1">10.</b> Va ashabul mash-amati maa ashabul mash-amah.</p>
+                    <p><b class="text-roseGold-600 mr-1">11.</b> Vas-sabiqunas-sabiqun.</p>
+                    <p><b class="text-roseGold-600 mr-1">12.</b> Ulaaikal muqorrobun.</p>
+                    <p><b class="text-roseGold-600 mr-1">13.</b> Fiy jannatin-na'iym.</p>
+                    <p><b class="text-roseGold-600 mr-1">14.</b> Sullatum minal avvaliyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">15.</b> Va qoliylum minal akhiriyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">16.</b> 'Ala sururim mavzunah.</p>
+                    <p><b class="text-roseGold-600 mr-1">17.</b> Muttaki-iyna 'alayha mutaqobiliyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">18.</b> Yatufu 'alayhim vildanum mukholladun.</p>
+                    <p><b class="text-roseGold-600 mr-1">19.</b> Biakvaabiv-va abaariyqa va ka'sim mim ma'iyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">20.</b> Laa yusodda'una 'anha va laa yunzifun.</p>
+                    <p><b class="text-roseGold-600 mr-1">21.</b> Va faakihatim mimma yatakhoyyarun.</p>
+                    <p><b class="text-roseGold-600 mr-1">22.</b> Va lakhmi toyrim mimma yashtahun.</p>
+                    <p><b class="text-roseGold-600 mr-1">23.</b> Va khurun 'iyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">24.</b> Kaamsalil lu'lu'il maknun.</p>
+                    <p><b class="text-roseGold-600 mr-1">25.</b> Jazaa-am bimaa kaanu ya'malun.</p>
+                    <p><b class="text-roseGold-600 mr-1">26.</b> Laa yasma'una fiyha lagvav-va laa ta'siymas.</p>
+                    <p><b class="text-roseGold-600 mr-1">27.</b> Illaa qiylan salamaan salamaa.</p>
+                    <p><b class="text-roseGold-600 mr-1">28.</b> Va ashabul yamiyni maa ashabul yamiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">29.</b> Fiy sidrim makhzud.</p>
+                    <p><b class="text-roseGold-600 mr-1">30.</b> Va tolkhim manzud.</p>
+                    <p><b class="text-roseGold-600 mr-1">31.</b> Va zillim mamdud.</p>
+                    <p><b class="text-roseGold-600 mr-1">32.</b> Va maa-im maskub.</p>
+                    <p><b class="text-roseGold-600 mr-1">33.</b> Va faakihatin kasijroh.</p>
+                    <p><b class="text-roseGold-600 mr-1">34.</b> Laa maqtu'ativ-va laa mamnu'ah.</p>
+                    <p><b class="text-roseGold-600 mr-1">35.</b> Va furushim marfu'ah.</p>
+                    <p><b class="text-roseGold-600 mr-1">36.</b> Innaa ansha'naahunna inshaa-a.</p>
+                    <p><b class="text-roseGold-600 mr-1">37.</b> Faja'alnaahunna abkaaro.</p>
+                    <p><b class="text-roseGold-600 mr-1">38.</b> 'Uruban atrooba.</p>
+                    <p><b class="text-roseGold-600 mr-1">39.</b> Li-ashabil yamiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">40.</b> Sullatum minal avvaliyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">41.</b> Va sullatum minal akhiriyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">42.</b> Va ashabush-shimaali maa ashabush-shimaal.</p>
+                    <p><b class="text-roseGold-600 mr-1">43.</b> Fiy samumiv-va khamiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">44.</b> Va zillim miy yahmum.</p>
+                    <p><b class="text-roseGold-600 mr-1">45.</b> Laa baaridiv-va laa kariym.</p>
+                    <p><b class="text-roseGold-600 mr-1">46.</b> Innahum kaanu qobla zaalika mutrafiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">47.</b> Va kaanu yusirruna 'alal khinsil 'aziym.</p>
+                    <p><b class="text-roseGold-600 mr-1">48.</b> Va kaanu yaquluna a-iza mitnaa va kunnaa turooban-va 'izoomand a-innaa lamab'usun.</p>
+                    <p><b class="text-roseGold-600 mr-1">49.</b> A-va aabaa'unal avvalun.</p>
+                    <p><b class="text-roseGold-600 mr-1">50.</b> Qul innal avvaliyna val akhiriyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">51.</b> Lamajmu'una ilaa miyqoti yavmim ma'lum.</p>
+                    <p><b class="text-roseGold-600 mr-1">52.</b> Summa innakum ayyuhad-doollunal mukazzibun.</p>
+                    <p><b class="text-roseGold-600 mr-1">53.</b> Laa-akiluna min shajarim min zaqqum.</p>
+                    <p><b class="text-roseGold-600 mr-1">54.</b> Famaali-una minhal butun.</p>
+                    <p><b class="text-roseGold-600 mr-1">55.</b> Fashaaribuna 'alayhi minal khamiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">56.</b> Fashaaribuna shurbal hiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">57.</b> Haaza nuzuluhum yavmad-diyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">58.</b> Nakhnu khalaqnaakum falav laa tusaddiqun.</p>
+                    <p><b class="text-roseGold-600 mr-1">59.</b> Afaro-aytum maa tumnun.</p>
+                    <p><b class="text-roseGold-600 mr-1">60.</b> A-antum takhluqunahu am nakhnul kholiqun.</p>
+                    <p><b class="text-roseGold-600 mr-1">61.</b> Nakhnu qoddarnaa baynakumul mavta va maa nakhnu bimasbuqiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">62.</b> 'Alaa an nubaddila amsaalakum va nunshi-akum fiy maa laa ta'lamun.</p>
+                    <p><b class="text-roseGold-600 mr-1">63.</b> Va laqod 'alimtumun-nash-atal ulaa falav laa tazakkarun.</p>
+                    <p><b class="text-roseGold-600 mr-1">64.</b> Afaro-aytum maa takhrusun.</p>
+                    <p><b class="text-roseGold-600 mr-1">65.</b> A-antum tazro'unahu am nakhnuz-zaari'un.</p>
+                    <p><b class="text-roseGold-600 mr-1">66.</b> Lav nashaa-u laja'alnaahu khutoman fazoltum tafakkahun.</p>
+                    <p><b class="text-roseGold-600 mr-1">67.</b> Innaa lamugramun.</p>
+                    <p><b class="text-roseGold-600 mr-1">68.</b> Bal nakhnu mahrumun.</p>
+                    <p><b class="text-roseGold-600 mr-1">69.</b> Afaro-aytumul-maa-allaziy tashrabun.</p>
+                    <p><b class="text-roseGold-600 mr-1">70.</b> A-antum anzaltumuhu minal muzni am nakhnul munzilun.</p>
+                    <p><b class="text-roseGold-600 mr-1">71.</b> Lav nashaa-u ja'alnaahu ujaajan falav laa tashkurun.</p>
+                    <p><b class="text-roseGold-600 mr-1">72.</b> Afaro-aytumun-naarallatiy turun.</p>
+                    <p><b class="text-roseGold-600 mr-1">73.</b> A-antum ansha'tum shajaratahaa am nakhnul munshi-un.</p>
+                    <p><b class="text-roseGold-600 mr-1">74.</b> Nakhnu ja'alnaahaa tazkirotav-va mataa'al lil muqviyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">75.</b> Fasabbikh bismi robbikal 'aziym.</p>
+                    <p><b class="text-roseGold-600 mr-1">76.</b> Falaa uqsimu bimavaaqi'in-nujum.</p>
+                    <p><b class="text-roseGold-600 mr-1">77.</b> Va innahu laqasamul-lav ta'lamuna 'aziym.</p>
+                    <p><b class="text-roseGold-600 mr-1">78.</b> Innahu laqur-aanun kariym.</p>
+                    <p><b class="text-roseGold-600 mr-1">79.</b> Fiy kitaabim maknun.</p>
+                    <p><b class="text-roseGold-600 mr-1">80.</b> Laa yamassuhu illal mutohharun.</p>
+                    <p><b class="text-roseGold-600 mr-1">81.</b> Tanziylum mir-robbil 'alaamiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">82.</b> Afabihaazal khadiysi antum mudkhinun.</p>
+                    <p><b class="text-roseGold-600 mr-1">83.</b> Va taj'aluna rizqakum annakum tukazzibun.</p>
+                    <p><b class="text-roseGold-600 mr-1">84.</b> Falav laa izaa balagatil khulqum.</p>
+                    <p><b class="text-roseGold-600 mr-1">85.</b> Va antum khiyna-izin tanzurun.</p>
+                    <p><b class="text-roseGold-600 mr-1">86.</b> Va nakhnu aqrobu ilayhi minkum va laakil laa tubsirun.</p>
+                    <p><b class="text-roseGold-600 mr-1">87.</b> Falav laa in kuntum goyro madiyniyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">88.</b> Tarji'unahaa in kuntum sodiqiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">89.</b> Fa-ammaa in kaana minal muqorrobiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">90.</b> Farovkhuv-va royhaanuv-va jannatu na'iym.</p>
+                    <p><b class="text-roseGold-600 mr-1">91.</b> Va ammaa in kaana min ashabil yamiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">92.</b> Fasalaamul laka min ashabil yamiyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">93.</b> Va ammaa in kaana minal mukazzibiynaz-zoolliyn.</p>
+                    <p><b class="text-roseGold-600 mr-1">94.</b> Fanuzulum min khamiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">95.</b> Va tasliyatu jakhiym.</p>
+                    <p><b class="text-roseGold-600 mr-1">96.</b> Inna haaza lahuva haqqul yaqiyn. Fasabbikh bismi robbikal 'aziym.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-notebook" class="tab-content hidden">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-10 gold-border shadow-xl max-w-4xl mx-auto">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-roseGold-200 pb-4">
+                    <div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-800">Oyatlarni Ko'chirib Yozish Dafteri</h3>
+                        <p class="text-xs text-stone-500">Kunlik ko'chirilgan oyatlaringiz hamda qalb taassurotlaringiz</p>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-bold text-stone-600">Kunni tanlang:</label>
+                        <select id="notebookDaySelect" onchange="loadNotebookDay()" class="px-3 py-2 rounded-xl bg-white border border-roseGold-300 font-bold text-sm focus:outline-none text-roseGold-600">
+                            <!-- Options 1 to 40 populated via JS -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 p-6 rounded-2xl border border-roseGold-200 shadow-inner relative">
+                    <div class="flex items-center justify-between mb-3 text-xs font-bold text-roseGold-600">
+                        <span id="notebookDayTitle"><i class="fas fa-bookmark mr-1"></i> 1-kun. Oyatlarni ko'chirish va qalbga muhrlash</span>
+                        <span class="text-stone-400 font-normal"><i class="fas fa-check-double mr-1"></i>Avto-saqlanadi</span>
+                    </div>
+
+                    <textarea id="notebookText" oninput="saveNotebookData()" rows="12" placeholder="Shu kungi o'qigan yoki ko'chirib yozgan oyatlaringizni hamda shaxsiy fikrlaringizni shu yerga yozib boring..." 
+                        class="w-full p-4 rounded-xl border border-stone-200 focus:outline-none focus:border-roseGold-500 text-sm leading-relaxed resize-y bg-stone-50/50 font-sans"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-dhikr" class="tab-content hidden">
+            <div class="tulip-bg rounded-3xl p-6 sm:p-10 gold-border shadow-xl max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-3xl font-bold text-stone-800">Kunlik Zikrlar</h3>
+                    <p class="text-stone-500 text-sm mt-1">Qalbingizga sukunat beruvchi eng go'zal kalimalar</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-roseGold-100 to-blush-100 border border-roseGold-300 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-stone-400 tracking-wider">ZIKR 1</p>
+                            <h4 class="font-serif font-extrabold text-xl text-stone-800 mt-1">LA ILAHA ILLA ALLAH</h4>
+                        </div>
+                        <i class="fas fa-star-and-crescent text-2xl text-roseGold-400"></i>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-stone-800 to-stone-900 text-white border border-stone-700 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-stone-400 tracking-wider">ZIKR 2</p>
+                            <h4 class="font-serif font-extrabold text-xl text-goldAccent-300 mt-1">SUBHANALLAH</h4>
+                        </div>
+                        <i class="fas fa-gem text-2xl text-goldAccent-400"></i>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-800 to-emerald-950 text-white border border-emerald-700 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-emerald-300 tracking-wider">ZIKR 3</p>
+                            <h4 class="font-serif font-extrabold text-xl text-emerald-100 mt-1">ALHAMDULILLAH</h4>
+                        </div>
+                        <i class="fas fa-heart text-2xl text-emerald-400"></i>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-blush-200 to-roseGold-200 border border-blush-300 shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-blush-600 tracking-wider">ZIKR 4</p>
+                            <h4 class="font-serif font-extrabold text-xl text-stone-800 mt-1">ALLAHU AKBAR</h4>
+                        </div>
+                        <i class="fas fa-sun text-2xl text-blush-500"></i>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-100 to-roseGold-100 border border-amber-300 shadow-sm flex items-center justify-between sm:col-span-2">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-amber-700 tracking-wider">ZIKR 5</p>
+                            <h4 class="font-serif font-extrabold text-xl text-stone-800 mt-1">ASTAGHFIRULLAH AL-AZIM</h4>
+                        </div>
+                        <i class="fas fa-hands text-2xl text-amber-600"></i>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-stone-100 to-roseGold-50 border border-roseGold-300 shadow-sm flex items-center justify-between sm:col-span-2">
+                        <div>
+                            <p class="text-xs uppercase font-extrabold text-stone-500 tracking-wider">ZIKR 6</p>
+                            <h4 class="font-serif font-extrabold text-lg sm:text-xl text-stone-800 mt-1">LA HAWLA WA LA QUWWATA ILLA BILLAH</h4>
+                        </div>
+                        <i class="fas fa-shield-halved text-2xl text-roseGold-500"></i>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // State variables
+        let trackerState = Array(40).fill(false);
+        let notebookState = {};
+
+        window.onload = function() {
+            initNotebookSelect();
+            loadAllData();
+            renderHeartGrid();
+        };
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('bg-white', 'text-stone-600');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.classList.remove('bg-white', 'text-stone-600');
+            }
+        }
+
+        // Render 40 days heart grid
+        function renderHeartGrid() {
+            const grid = document.getElementById('heartGrid');
+            grid.innerHTML = '';
+
+            let completedCount = 0;
+
+            for (let i = 1; i <= 40; i++) {
+                const isDone = trackerState[i - 1];
+                if (isDone) completedCount++;
+
+                const btn = document.createElement('button');
+                btn.className = `heart-grid-item w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex flex-col items-center justify-center font-bold text-sm sm:text-base cursor-pointer transition ${
+                    isDone 
+                        ? 'completed' 
+                        : 'bg-white text-stone-700 border-roseGold-200 hover:border-blush-400 hover:bg-blush-50'
+                }`;
+
+                btn.onclick = () => toggleDay(i - 1);
+                btn.innerHTML = `
+                    <span>${i}</span>
+                    <i class="fas ${isDone ? 'fa-check' : 'fa-heart'} text-[10px] mt-0.5 ${isDone ? 'text-white' : 'text-blush-300'}"></i>
+                `;
+
+                grid.appendChild(btn);
+            }
+
+            // Update Progress Bar
+            const percent = Math.round((completedCount / 40) * 100);
+            document.getElementById('progressBar').style.width = `${percent}%`;
+            document.getElementById('progressText').textContent = `${completedCount} / 40 Kun (${percent}%)`;
+        }
+
+        // Toggle Day State
+        function toggleDay(index) {
+            trackerState[index] = !trackerState[index];
+            saveTrackerData();
+            renderHeartGrid();
+        }
+
+        // Initialize Notebook Dropdown
+        function initNotebookSelect() {
+            const select = document.getElementById('notebookDaySelect');
+            select.innerHTML = '';
+            for (let i = 1; i <= 40; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = `${i}-kun`;
+                select.appendChild(opt);
+            }
+        }
+
+        // Load Notebook Entry
+        function loadNotebookDay() {
+            const day = document.getElementById('notebookDaySelect').value;
+            document.getElementById('notebookDayTitle').innerHTML = `<i class="fas fa-bookmark mr-1"></i> ${day}-kun. Oyatlarni ko'chirish va qalbga muhrlash`;
+            document.getElementById('notebookText').value = notebookState[day] || '';
+        }
+
+        // Save Notebook Entry
+        function saveNotebookData() {
+            const day = document.getElementById('notebookDaySelect').value;
+            notebookState[day] = document.getElementById('notebookText').value;
+            localStorage.setItem('voqea_notebook', JSON.stringify(notebookState));
+        }
+
+        // Save Owner Info
+        function saveOwnerData() {
+            const ownerData = {
+                name: document.getElementById('ownerName').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                intentions: document.getElementById('intentionsText').value
+            };
+            localStorage.setItem('voqea_owner', JSON.stringify(ownerData));
+        }
+
+        // Save Tracker Data
+        function saveTrackerData() {
+            localStorage.setItem('voqea_tracker', JSON.stringify(trackerState));
+        }
+
+        // Load All LocalStorage Data
+        function loadAllData() {
+            // Tracker
+            const savedTracker = localStorage.getItem('voqea_tracker');
+            if (savedTracker) {
+                try { trackerState = JSON.parse(savedTracker); } catch(e){}
+            }
+
+            // Owner
+            const savedOwner = localStorage.getItem('voqea_owner');
+            if (savedOwner) {
+                try {
+                    const owner = JSON.parse(savedOwner);
+                    if (owner.name) document.getElementById('ownerName').value = owner.name;
+                    if (owner.startDate) document.getElementById('startDate').value = owner.startDate;
+                    if (owner.endDate) document.getElementById('endDate').value = owner.endDate;
+                    if (owner.intentions) document.getElementById('intentionsText').value = owner.intentions;
+                } catch(e){}
+            }
+
+            // Notebook
+            const savedNotebook = localStorage.getItem('voqea_notebook');
+            if (savedNotebook) {
+                try { notebookState = JSON.parse(savedNotebook); } catch(e){}
+            }
+
+            loadNotebookDay();
+        }
+
+        // Reset Data
+        function resetAllData() {
+            if (confirm("Haqiqatdan ham barcha saqlangan ma'lumotlar va kunlik belgilaringizni tozalamoqchimisiz?")) {
+                localStorage.removeItem('voqea_tracker');
+                localStorage.removeItem('voqea_owner');
+                localStorage.removeItem('voqea_notebook');
+
+                trackerState = Array(40).fill(false);
+                notebookState = {};
+
+                document.getElementById('ownerName').value = '';
+                document.getElementById('startDate').value = '';
+                document.getElementById('endDate').value = '';
+                document.getElementById('intentionsText').value = '';
+
+                renderHeartGrid();
+                loadNotebookDay();
+            }
+        }
+    </script>
+</body>
+</html>

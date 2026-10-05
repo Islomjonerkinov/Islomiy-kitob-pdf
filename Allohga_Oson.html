@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allohga Oson Kundaligi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f0f7fc 0%, #e2eef7 100%);
+            color: #0f2d4a;
+        }
+        .font-serif-custom {
+            font-family: 'Marcellus', serif;
+        }
+        .journal-border {
+            border: 2px solid #3182ce;
+            border-radius: 20px;
+            position: relative;
+        }
+        .journal-border::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid #90cdf4;
+            border-radius: 16px;
+            pointer-events: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #90cdf4;
+            border-radius: 10px;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-blue-100 shadow-sm no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-teal-700 text-white flex items-center justify-center font-serif-custom text-xl shadow-md">
+                    📖
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold font-serif-custom text-teal-950 tracking-wide">ALLOHGA OSON</h1>
+                    <p class="text-xs text-teal-600 font-medium">Ma'naviy va ruhshunoslik kundaligi</p>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <nav class="flex flex-wrap justify-center gap-1 bg-blue-50/80 p-1.5 rounded-2xl border border-blue-100">
+                <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-teal-950 bg-white shadow-sm">
+                    <i class="fa-solid fa-house mr-1.5"></i>Bosh Sahifa
+                </button>
+                <button onclick="switchTab('asmaul')" id="tab-asmaul" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-teal-900">
+                    <i class="fa-solid fa-kaaba mr-1.5"></i>99 Ism
+                </button>
+                <button onclick="switchTab('guide')" id="tab-guide" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-teal-900">
+                    <i class="fa-solid fa-book-open mr-1.5"></i>Texnikalar
+                </button>
+                <button onclick="switchTab('journal')" id="tab-journal" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-teal-900">
+                    <i class="fa-solid fa-pen-nib mr-1.5"></i>Kundalik
+                </button>
+                
+                <a href="index.html" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-teal-800 hover:text-teal-950 hover:bg-white transition">
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>Nurli Hidayat
+                </a>
+            </nav>
+        </div>
+        <div class="max-w-6xl mx-auto mt-4 flex flex-wrap justify-center gap-2">
+            <a href="index.html" class="px-3 py-1.5 rounded-full bg-white/80 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-50 transition">Bosh sahifa</a>
+            <a href="40_Ming_istiqfor.html" class="px-3 py-1.5 rounded-full bg-white/80 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-50 transition">40 ming</a>
+            <a href="40_Kunlik%20_voqea.html" class="px-3 py-1.5 rounded-full bg-white/80 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-50 transition">40 kunlik voqea</a>
+            <a href="Tahajjud_Daftarim.html" class="px-3 py-1.5 rounded-full bg-white/80 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-50 transition">Tahajjud</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: Bosh Sahifa (Muallif Maktubi & Shaxsiy Ma'lumotlar) -->
+        <section id="section-home" class="tab-content block space-y-8">
+            <!-- Decorative Banner -->
+            <div class="bg-gradient-to-r from-teal-800 via-blue-900 to-indigo-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">🌿</div>
+                <div class="relative z-10 text-center max-w-2xl mx-auto space-y-3">
+                    <span class="bg-teal-500/30 text-teal-100 text-xs px-3 py-1 rounded-full uppercase tracking-widest font-semibold border border-teal-400/30">Ruhlantiruvchi journal</span>
+                    <h2 class="text-3xl md:text-4xl font-serif-custom font-bold">ALLOHGA OSON</h2>
+                    <p class="text-blue-100 text-sm md:text-base italic">"Har bir qiyinchilik ortida bir yengillik bor. Niyat xolis bo'lsa, barcha tugunlar yechiladi."</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Muallifdan maktub Card -->
+                <div class="journal-border bg-white p-6 md:p-8 shadow-md hover:shadow-lg transition">
+                    <div class="text-center space-y-4">
+                        <span class="text-3xl">✉️</span>
+                        <h3 class="text-xl font-serif-custom font-bold text-teal-950 border-b border-blue-100 pb-2">Muallifdan Maktub</h3>
+                        <div class="text-slate-700 text-sm leading-relaxed space-y-3 text-justify">
+                            <p class="font-medium text-teal-900">Assalomu alaykum va rahmatulloh!</p>
+                            <p>Ushbu kundalik sizning hayotingizni tartibga solish, qalbingizga xotirjamlik va har bir kuningizga baraka olib kirish uchun yaratildi.</p>
+                            <p>Esingizda bo'lsin, <span class="font-bold text-teal-800">Alloh uchun imkonsiz narsaning o'zi yo'q.</span> Agar niyat xolis bo'lsa, har bir qiyinchilik ortida bir yengillik bor.</p>
+                            <p class="italic text-teal-900 font-medium text-center pt-2">Keling, har bir kuningizni 'Bismillah' bilan boshlab, shukrona bilan yakunlaymiz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shaxsiy Ma'lumotlar Card with Real-time Auto-save -->
+                <div class="journal-border bg-white p-6 md:p-8 shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="text-center space-y-2 mb-6">
+                            <span class="text-3xl">👤</span>
+                            <h3 class="text-xl font-serif-custom font-bold text-teal-950 border-b border-blue-100 pb-2">Shaxsiy Ma'lumotlar Sahifasi</h3>
+                        </div>
+                        
+                        <form id="profile-form" class="space-y-4" onsubmit="event.preventDefault()">
+                            <div>
+                                <label class="block text-xs font-bold text-teal-900 uppercase tracking-wider mb-1">Ismim:</label>
+                                <input type="text" id="user-name" oninput="autoSaveProfile()" placeholder="Ismingizni kiriting..." class="w-full bg-blue-50/50 border-b-2 border-blue-300 focus:border-teal-600 px-3 py-2 text-sm outline-none transition rounded-t-lg">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-teal-900 uppercase tracking-wider mb-1">Mening katta maqsadim:</label>
+                                <textarea id="user-goal" oninput="autoSaveProfile()" rows="4" placeholder="Hayotdagi eng ulug' maqsadingiz va orzularingiz..." class="w-full bg-blue-50/50 border-b-2 border-blue-300 focus:border-teal-600 px-3 py-2 text-sm outline-none transition custom-scrollbar resize-none rounded-t-lg"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-teal-900 uppercase tracking-wider mb-1">Bog'lanish (tel):</label>
+                                <input type="text" id="user-phone" oninput="autoSaveProfile()" placeholder="+998 -- --- -- --" class="w-full bg-blue-50/50 border-b-2 border-blue-300 focus:border-teal-600 px-3 py-2 text-sm outline-none transition rounded-t-lg">
+                            </div>
+                        </form>
+                    </div>
+                    <div id="profile-status" class="text-xs text-center text-emerald-600 font-semibold mt-4 flex items-center justify-center space-x-1">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>O'zgarishlar avtomatik saqlanmoqda</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: Asmaul Husna (99 Names) -->
+        <section id="section-asmaul" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-blue-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="text-2xl font-serif-custom font-bold text-teal-950">ALLOHNING 99 GO'ZAL ISMINI (ASMAUL HUSNA)</h2>
+                    <p class="text-xs text-slate-500 mt-1">Ismlar va ularning o'zbek tilidagi ma'nolari hamda ma'naviy mohiyati</p>
+                </div>
+                <div class="relative w-full md:w-72">
+                    <input type="text" id="search-asmaul" oninput="filterAsmaul()" placeholder="Ismlardan izlash..." class="w-full pl-9 pr-4 py-2 bg-blue-50/60 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- Asmaul Grid -->
+            <div id="asmaul-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Javascript populated -->
+            </div>
+        </section>
+
+        <!-- TAB 3: Texnikalar va Tasdiqlar -->
+        <section id="section-guide" class="tab-content hidden space-y-6">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl font-serif-custom font-bold text-teal-950">"ALLOHGA OSON" TEXNIKASI VA TASDIQLAR</h2>
+                <p class="text-sm text-slate-600">Siz o'zingizni qiynayotgan yoki erishmoqchi bo'lgan sohangizga qarab quyidagilarni ishlatishingiz va shaxsiy eslatmalaringizni yozib qo'yishingiz mumkin</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Boylik & Baraka -->
+                <div class="bg-white rounded-2xl p-6 border-l-4 border-amber-500 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-3 text-amber-600">
+                        <i class="fa-solid fa-coins text-xl"></i>
+                        <h3 class="font-bold font-serif-custom text-lg text-slate-800">Boylik va Baraka Haqida</h3>
+                    </div>
+                    <blockquote class="bg-amber-50/50 p-4 rounded-xl text-slate-700 text-sm leading-relaxed border border-amber-100 italic">
+                        "Mening boy bo'lishim <span class="font-semibold text-amber-900">AR-RAZZOQQA</span> (Rizq beruvchiga) oson. U xohlasa, hisobsiz rizqni kutilmagan tomondan eshik qilib ochib qo'yadi."
+                    </blockquote>
+                </div>
+
+                <!-- Muammolar Yechimi -->
+                <div class="bg-white rounded-2xl p-6 border-l-4 border-blue-500 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-3 text-blue-600">
+                        <i class="fa-solid fa-key text-xl"></i>
+                        <h3 class="font-bold font-serif-custom text-lg text-slate-800">Muammolar Yechimi Haqida</h3>
+                    </div>
+                    <blockquote class="bg-blue-50/50 p-4 rounded-xl text-slate-700 text-sm leading-relaxed border border-blue-100 italic">
+                        "Mening berk ko'chalardan chiqishim va yangi imkoniyatlar topishim <span class="font-semibold text-blue-900">AL-FATTOHGA</span> (Eshiklarni ochuvchiga) oson. Men yopiq deb o'ylagan eshiklar Uning uchun birgina 'BO'L!' demakdir."
+                    </blockquote>
+                </div>
+
+                <!-- Sog'lik va Kuch-quvvat -->
+                <div class="bg-white rounded-2xl p-6 border-l-4 border-emerald-500 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-3 text-emerald-600">
+                        <i class="fa-solid fa-heart-pulse text-xl"></i>
+                        <h3 class="font-bold font-serif-custom text-lg text-slate-800">Sog'lik va Kuch-quvvat Haqida</h3>
+                    </div>
+                    <blockquote class="bg-emerald-50/50 p-4 rounded-xl text-slate-700 text-sm leading-relaxed border border-emerald-100 italic">
+                        "Mening tanamning butkul sog'ayishi va quvvatga to'lishi <span class="font-semibold text-emerald-900">ASH-SHOFIYGA</span> (Shifo beruvchiga) oson. Har bir hujayram Uning nazoratida va U xohlagan lahzada shifo beradi."
+                    </blockquote>
+                </div>
+
+                <!-- Bilim va Donolik -->
+                <div class="bg-white rounded-2xl p-6 border-l-4 border-purple-500 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-3 text-purple-600">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        <h3 class="font-bold font-serif-custom text-lg text-slate-800">Bilim va Donolik Haqida</h3>
+                    </div>
+                    <blockquote class="bg-purple-50/50 p-4 rounded-xl text-slate-700 text-sm leading-relaxed border border-purple-100 italic">
+                        "Murakkab ilmlarni oson o'zlashtirishim va zehnim ochilishi <span class="font-semibold text-purple-900">AL-ALIMGA</span> (Hamma narsani biluvchiga) oson. U zot menga bildirmagan narsasini hech qayerdan topa olmayman."
+                    </blockquote>
+                </div>
+
+                <!-- Xotirjamlik va Qalb Sokinligi -->
+                <div class="bg-white rounded-2xl p-6 border-l-4 border-teal-500 shadow-sm space-y-3 md:col-span-2">
+                    <div class="flex items-center space-x-3 text-teal-600">
+                        <i class="fa-solid fa-spa text-xl"></i>
+                        <h3 class="font-bold font-serif-custom text-lg text-slate-800">Xotirjamlik va Qalb Sokinligi Haqida</h3>
+                    </div>
+                    <blockquote class="bg-teal-50/50 p-4 rounded-xl text-slate-700 text-sm leading-relaxed border border-teal-100 italic">
+                        "Qalbimdagi barcha xavotirlarning o'rnini xotirjamlik egallashi <span class="font-semibold text-teal-900">AS-SALOMGA</span> (Tinchlik beruvchiga) oson. U qalbimga bir lahzada halovat tushira oladi."
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Shaxsiy Muholaza va Texnik Eslatmalari -->
+            <div class="journal-border bg-white p-6 md:p-8 space-y-4">
+                <h3 class="text-xl font-serif-custom font-bold text-center text-teal-950 border-b border-blue-100 pb-3">
+                    ✏️ Men O'zim uchun Ishlatadigan Maxsus Tasdiqlar va Eslatmalar
+                </h3>
+                <p class="text-xs text-slate-500 text-center">Bu yerga o'zingiz uchun eng ta'sirli tasdiqlaringizni yozib qo'ying, ular ham doimiy saqlanadi:</p>
+                <textarea id="technique-notes" oninput="autoSaveTechniqueNotes()" placeholder="Misol uchun: 'Mening har bir rejam amalga oshishi Allohga oson...'" class="w-full bg-blue-50/40 border border-blue-200 rounded-xl p-4 text-sm focus:bg-white focus:border-teal-600 outline-none transition custom-scrollbar min-h-[110px] resize-y"></textarea>
+                <p id="tech-notes-status" class="text-xs text-right text-emerald-600 font-medium">
+                    <i class="fa-solid fa-check mr-1"></i>Avtomati saqlanadi
+                </p>
+            </div>
+        </section>
+
+        <!-- TAB 4: Interaktiv Kundalik -->
+        <section id="section-journal" class="tab-content hidden space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-blue-100">
+                <div>
+                    <h2 class="text-2xl font-serif-custom font-bold text-teal-950">Shaxsiy Kundaligingiz</h2>
+                    <p class="text-xs text-slate-500">Kuningizni tahlil qiling, duolaringiz va shukronalaringizni yozib boring</p>
+                </div>
+                <div class="flex items-center space-x-2 no-print">
+                    <button onclick="window.print()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Chop etish / PDF</span>
+                    </button>
+                    <button onclick="clearCurrentJournalForm()" class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-eraser"></i>
+                        <span>Formani tozalash</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Entry Input Form -->
+            <div class="journal-border bg-white p-6 md:p-8 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-blue-100 pb-4 gap-2">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-regular fa-calendar-days text-teal-700 text-lg"></i>
+                        <input type="date" id="journal-date" onchange="onJournalDateChange()" class="font-bold text-teal-950 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 text-sm outline-none cursor-pointer">
+                    </div>
+                    <span id="journal-sync-badge" class="text-xs text-teal-700 font-semibold bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i>Avto-saqlash yoqilgan
+                    </span>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- 1. Istig'for & Salovat -->
+                    <div class="space-y-2">
+                        <label class="block font-serif-custom font-bold text-teal-950 text-base flex items-center space-x-2">
+                            <span>1. Bugungi Istig'for va Salovatlarim</span>
+                        </label>
+                        <textarea id="entry-istigfor" oninput="autoSaveCurrentJournal()" placeholder="Bugun aytgan istig'for va salovatlaringiz soni yoki tuyg'ularingiz..." class="w-full bg-blue-50/30 border border-blue-200 rounded-xl p-3 text-sm focus:bg-white focus:border-teal-600 outline-none transition custom-scrollbar min-h-[80px]"></textarea>
+                    </div>
+
+                    <!-- 2. Shukronalik -->
+                    <div class="space-y-2">
+                        <label class="block font-serif-custom font-bold text-teal-950 text-base flex items-center space-x-2">
+                            <span>2. Bugungi 3 ta Shukronaligim ("Allohga oson" bilan)</span>
+                        </label>
+                        <textarea id="entry-shukronalik" oninput="autoSaveCurrentJournal()" placeholder="1. Sog'lik uchun...&#10;2. Rizq uchun...&#10;3. Imkoniyat uchun..." class="w-full bg-blue-50/30 border border-blue-200 rounded-xl p-3 text-sm focus:bg-white focus:border-teal-600 outline-none transition custom-scrollbar min-h-[100px]"></textarea>
+                    </div>
+
+                    <!-- 3. Allohga oson duolarim -->
+                    <div class="space-y-2">
+                        <label class="block font-serif-custom font-bold text-teal-950 text-base flex items-center space-x-2">
+                            <span>3. Allohga oson deb so'rayotgan duolarim va maqsadlarim</span>
+                        </label>
+                        <textarea id="entry-duo" oninput="autoSaveCurrentJournal()" placeholder="Robbim, senga oson, mening ushbu orzuimni ro'yobga chiqar..." class="w-full bg-blue-50/30 border border-blue-200 rounded-xl p-3 text-sm focus:bg-white focus:border-teal-600 outline-none transition custom-scrollbar min-h-[100px]"></textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2">
+                    <span id="save-msg" class="text-xs font-semibold text-emerald-600 transition-opacity">
+                        <i class="fa-solid fa-circle-check mr-1"></i>Har bir harf xotirada saqlanadi
+                    </span>
+                </div>
+            </div>
+
+            <!-- Saved Entries History -->
+            <div class="space-y-4 pt-4">
+                <h3 class="text-xl font-serif-custom font-bold text-teal-950">Barcha Saqlangan Yozuvlar Tarixi</h3>
+                <div id="journal-history" class="space-y-4">
+                    <!-- Dynamic Entries JS -->
+                </div>
+            </div>
+        </section>
+
+        
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-blue-100 py-4 mt-8 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500 space-y-1">
+            <p class="font-medium text-teal-950">Allohga Oson Kundaligi &copy; 2026</p>
+            <p class="text-emerald-700"><i class="fa-solid fa-shield-halved mr-1"></i>Barcha kiritilgan ma'lumotlar brauzeringiz xotirasida (localStorage) avtomati xavfsiz saqlanadi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 99 Names of Allah Dataset
+        const asmaulHusnaData = [
+            { id: 1, name: "ALLOH", meaning: "Yagona Iloh" },
+            { id: 2, name: "AR-ROHMAN", meaning: "O'ta mehribon" },
+            { id: 3, name: "AR-ROHIM", meaning: "Juda rahmli" },
+            { id: 4, name: "AL-MALIK", meaning: "Haqiqiy podshoh" },
+            { id: 5, name: "AL-QUDDUS", meaning: "Ayb-nuqsondan pok" },
+            { id: 6, name: "AS-SALAM", meaning: "Tinchlik beruvchi" },
+            { id: 7, name: "AL-MO'MIN", meaning: "Omonlik beruvchi" },
+            { id: 8, name: "AL-MUHAYMIN", meaning: "Kuzatib turuvchi" },
+            { id: 9, name: "AL-AZIZ", meaning: "G'olib, qudratli" },
+            { id: 10, name: "AL-JABBOR", meaning: "Irodasi cheksiz" },
+            { id: 11, name: "AL-MUTAKABBIR", meaning: "Kibriyo egasi" },
+            { id: 12, name: "AL-XOLIQ", meaning: "Yaratuvchi" },
+            { id: 13, name: "AL-BARI'", meaning: "Yo'qdan bor qiluvchi" },
+            { id: 14, name: "AL-MUSAVVIR", meaning: "Surat beruvchi" },
+            { id: 15, name: "AL-G'AFFOR", meaning: "Ko'plab kechiruvchi" },
+            { id: 16, name: "AL-QAHHOR", meaning: "Bo'ysundiruvchi" },
+            { id: 17, name: "AL-VAHHOB", meaning: "Ne'matlar beruvchi" },
+            { id: 18, name: "AR-RAZZOQ", meaning: "Rizq beruvchi" },
+            { id: 19, name: "AL-FATTAH", meaning: "Yo'l ochuvchi" },
+            { id: 20, name: "AL-ALIM", meaning: "Hammasini biluvchi" },
+            { id: 21, name: "AL-QOBID", meaning: "Rizqni qisuvchi" },
+            { id: 22, name: "AL-BASIT", meaning: "Rizqni kengaytiruvchi" },
+            { id: 23, name: "AL-XOFID", meaning: "Pastlatuvchi" },
+            { id: 24, name: "AR-ROFI'", meaning: "Ko'taruvchi" },
+            { id: 25, name: "AL-MU'IZZ", meaning: "Aziz qiluvchi" },
+            { id: 26, name: "AL-MUZILL", meaning: "Xor qiluvchi" },
+            { id: 27, name: "AS-SAMI'", meaning: "Har bir narsani eshituvchi" },
+            { id: 28, name: "AL-BASIR", meaning: "Har bir narsani ko'ruvchi" },
+            { id: 29, name: "AL-HAKAM", meaning: "Mutloq hakam" },
+            { id: 30, name: "AL-ADL", meaning: "O'ta adolatli" },
+            { id: 31, name: "AL-LATIF", meaning: "Lutf qiluvchi" },
+            { id: 32, name: "AL-XABIR", meaning: "Xabardor bo'luvchi" },
+            { id: 33, name: "AL-HALIM", meaning: "G'azabi kelmaydigan" },
+            { id: 34, name: "AL-AZIM", meaning: "Ulug' va buyuk" },
+            { id: 35, name: "AL-G'OFUR", meaning: "Mag'firat qiluvchi" },
+            { id: 36, name: "ASH-SHAKUR", meaning: "Mukofotlovchi" },
+            { id: 37, name: "AL-ALIY", meaning: "Yuksak darajali" },
+            { id: 38, name: "AL-KABIR", meaning: "Juda katta, ulug'" },
+            { id: 39, name: "AL-HAFIZ", meaning: "Saqlovchi" },
+            { id: 40, name: "AL-MUQIT", meaning: "Ozuqa beruvchi" },
+            { id: 41, name: "AL-HASIB", meaning: "Kifoya qiluvchi" },
+            { id: 42, name: "AL-JALIL", meaning: "Azamatli" },
+            { id: 43, name: "AL-KARIM", meaning: "Saxovatli" },
+            { id: 44, name: "AR-ROQIB", meaning: "Kuzatuvchi" },
+            { id: 45, name: "AL-MUJIB", meaning: "Duolarni ijobat qiluvchi" },
+            { id: 46, name: "AL-VASI'", meaning: "Qamrab oluvchi" },
+            { id: 47, name: "AL-HAKIM", meaning: "Hikmat sohibi" },
+            { id: 48, name: "AL-VADUD", meaning: "Sevuvchi" },
+            { id: 49, name: "AL-MAJID", meaning: "Shon-sharafli" },
+            { id: 50, name: "AL-BA'IS", meaning: "Qayta tiriltiruvchi" },
+            { id: 51, name: "ASH-SHAHID", meaning: "Guvoh bo'luvchi" },
+            { id: 52, name: "AL-HAQ", meaning: "Haqiqiy zot" },
+            { id: 53, name: "AL-VAKIL", meaning: "Vakil, homiy" },
+            { id: 54, name: "AL-QOVIY", meaning: "Quvvatli" },
+            { id: 55, name: "AL-MATIN", meaning: "Matonatli, mustahkam" },
+            { id: 56, name: "AL-VALIY", meaning: "Do'st va madadkor" },
+            { id: 57, name: "AL-HAMID", meaning: "Maqtovga loyiq" },
+            { id: 58, name: "AL-MUHSI", meaning: "Hisoblovchi" },
+            { id: 59, name: "AL-MUBDI'", meaning: "Boshlovchi" },
+            { id: 60, name: "AL-MU'ID", meaning: "Qaytaruvchi" },
+            { id: 61, name: "AL-MUHYI", meaning: "Tiriltiruvchi" },
+            { id: 62, name: "AL-MUMIT", meaning: "O'ldiruvchi" },
+            { id: 63, name: "AL-HAYY", meaning: "Tirik, abadiy" },
+            { id: 64, name: "AL-QAYYUM", meaning: "O'z-o'zidan turuvchi" },
+            { id: 65, name: "AL-VAJID", meaning: "Topuvchi" },
+            { id: 66, name: "AL-MAJID", meaning: "Ulug'vor" },
+            { id: 67, name: "AL-VAHID", meaning: "Yagona" },
+            { id: 68, name: "AS-SOMAD", meaning: "Hojatbaror" },
+            { id: 69, name: "AL-QODIR", meaning: "Qudratli" },
+            { id: 70, name: "AL-MUQTADIR", meaning: "Hamma narsaga qodir" },
+            { id: 71, name: "AL-MUQADDIM", meaning: "Oldinga suruvchi" },
+            { id: 72, name: "AL-MUAXXIR", meaning: "Orqaga suruvchi" },
+            { id: 73, name: "AL-AVVAL", meaning: "Birinchi, ibtidosiz" },
+            { id: 74, name: "AL-OXIR", meaning: "Oxirgi, nihoyasiz" },
+            { id: 75, name: "AZ-ZOHIR", meaning: "Ravshan, ko'zga ko'ringan" },
+            { id: 76, name: "AL-BOTIN", meaning: "Maxfiy, pinhon" },
+            { id: 77, name: "AL-VALIY", meaning: "Boshqaruvchi" },
+            { id: 78, name: "AL-MUTA'ALI", meaning: "O'ta yuksak" },
+            { id: 79, name: "AL-BARR", meaning: "Yaxshilik qiluvchi" },
+            { id: 80, name: "AT-TAVVOB", meaning: "Tavbalarni qabul qiluvchi" },
+            { id: 81, name: "AL-MUNTAQIM", meaning: "Intiqom oluvchi" },
+            { id: 82, name: "AL-AFUV", meaning: "Kechirimli" },
+            { id: 83, name: "AR-RA'UF", meaning: "Mehribon, shafqatli" },
+            { id: 84, name: "MALIKUL-MULK", meaning: "Mulk egasi" },
+            { id: 85, name: "ZUL JALALI VAL IKROM", meaning: "Ulug'lik va ikrom egasi" },
+            { id: 86, name: "AL-MUQSIT", meaning: "Adolat qiluvchi" },
+            { id: 87, name: "AL-JAMI'", meaning: "To'plovchi" },
+            { id: 88, name: "AL-G'ONIIR", meaning: "Boy, ehtiyojsiz" },
+            { id: 89, name: "AL-MUG'NIY", meaning: "Boyituvchi" },
+            { id: 90, name: "AL-MANI'", meaning: "To'suvchi" },
+            { id: 91, name: "AD-DORR", meaning: "Zarar beruvchi" },
+            { id: 92, name: "AN-NAFI'", meaning: "Manfaat beruvchi" },
+            { id: 93, name: "AN-NUR", meaning: "Nur taratuvchi" },
+            { id: 94, name: "AL-HADIY", meaning: "To'g'ri yo'lga boshlovchi" },
+            { id: 95, name: "AL-BADI'", meaning: "Tengsiz yaratuvchi" },
+            { id: 96, name: "AL-BAQIY", meaning: "Booqiy qoluvchi" },
+            { id: 97, name: "AL-VARIS", meaning: "Merosxo'r" },
+            { id: 98, name: "AR-RASHID", meaning: "To'g'ri yo'l ko'rsatuvchi" },
+            { id: 99, name: "AS-SOBUR", meaning: "O'ta sabrli" }
+        ];
+
+        // State Variables
+        let currentTasbehCounts = {};
+
+        // App Initialization
+        window.onload = function() {
+            // Set today's date default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('journal-date').value = today;
+
+            // Render Asmaul Husna
+            renderAsmaul(asmaulHusnaData);
+
+            // Load persisted state from localStorage
+            loadProfile();
+            loadTechniqueNotes();
+            loadJournalForSelectedDate();
+            loadJournalHistory();
+            loadTasbehState();
+        };
+
+        // Tab Switching Logic
+        function switchTab(tabKey) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-teal-950', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById(`section-${tabKey}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'text-teal-950', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600');
+            }
+        }
+
+        // --- 1. PROFILE AUTO-SAVE ---
+        function autoSaveProfile() {
+            const profile = {
+                name: document.getElementById('user-name').value,
+                goal: document.getElementById('user-goal').value,
+                phone: document.getElementById('user-phone').value
+            };
+            localStorage.setItem('allohga_oson_profile', JSON.stringify(profile));
+        }
+
+        function loadProfile() {
+            const saved = localStorage.getItem('allohga_oson_profile');
+            if (saved) {
+                try {
+                    const profile = JSON.parse(saved);
+                    document.getElementById('user-name').value = profile.name || '';
+                    document.getElementById('user-goal').value = profile.goal || '';
+                    document.getElementById('user-phone').value = profile.phone || '';
+                } catch(e) { console.error(e); }
+            }
+        }
+
+        // --- 2. ASMAUL HUSNA RENDER & SEARCH ---
+        function renderAsmaul(data) {
+            const container = document.getElementById('asmaul-container');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm hover:border-teal-300 transition flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-full bg-teal-50 text-teal-800 text-xs font-bold flex items-center justify-center shrink-0 font-serif-custom border border-teal-200">
+                        ${item.id}
+                    </span>
+                    <div>
+                        <h4 class="font-bold text-teal-950 text-sm font-serif-custom">${item.name}</h4>
+                        <p class="text-xs text-slate-600">${item.meaning}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterAsmaul() {
+            const query = document.getElementById('search-asmaul').value.toLowerCase();
+            const filtered = asmaulHusnaData.filter(item => 
+                item.name.toLowerCase().includes(query) || 
+                item.meaning.toLowerCase().includes(query)
+            );
+            renderAsmaul(filtered);
+        }
+
+        // --- 3. TECHNIQUES & AFFIRMATIONS NOTES AUTO-SAVE ---
+        function autoSaveTechniqueNotes() {
+            const val = document.getElementById('technique-notes').value;
+            localStorage.setItem('allohga_oson_technique_notes', val);
+        }
+
+        function loadTechniqueNotes() {
+            const saved = localStorage.getItem('allohga_oson_technique_notes');
+            if (saved !== null) {
+                document.getElementById('technique-notes').value = saved;
+            }
+        }
+
+        // --- 4. REAL-TIME JOURNAL AUTO-SAVE BY DATE ---
+        function onJournalDateChange() {
+            loadJournalForSelectedDate();
+        }
+
+        function autoSaveCurrentJournal() {
+            const date = document.getElementById('journal-date').value;
+            if (!date) return;
+
+            const istigfor = document.getElementById('entry-istigfor').value;
+            const shukronalik = document.getElementById('entry-shukronalik').value;
+            const duo = document.getElementById('entry-duo').value;
+
+            let history = JSON.parse(localStorage.getItem('allohga_oson_journal') || '[]');
+            const existingIndex = history.findIndex(item => item.date === date);
+
+            // Don't keep empty entries if user deleted all text
+            if (!istigfor.trim() && !shukronalik.trim() && !duo.trim()) {
+                if (existingIndex >= 0) {
+                    history.splice(existingIndex, 1);
+                }
+            } else {
+                const entryData = {
+                    date,
+                    istigfor,
+                    shukronalik,
+                    duo,
+                    updatedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                };
+
+                if (existingIndex >= 0) {
+                    history[existingIndex] = entryData;
+                } else {
+                    history.unshift(entryData);
+                }
+            }
+
+            localStorage.setItem('allohga_oson_journal', JSON.stringify(history));
+            loadJournalHistory();
+        }
+
+        function loadJournalForSelectedDate() {
+            const date = document.getElementById('journal-date').value;
+            const history = JSON.parse(localStorage.getItem('allohga_oson_journal') || '[]');
+            const entry = history.find(item => item.date === date);
+
+            if (entry) {
+                document.getElementById('entry-istigfor').value = entry.istigfor || '';
+                document.getElementById('entry-shukronalik').value = entry.shukronalik || '';
+                document.getElementById('entry-duo').value = entry.duo || '';
+            } else {
+                document.getElementById('entry-istigfor').value = '';
+                document.getElementById('entry-shukronalik').value = '';
+                document.getElementById('entry-duo').value = '';
+            }
+        }
+
+        function loadJournalHistory() {
+            const history = JSON.parse(localStorage.getItem('allohga_oson_journal') || '[]');
+            const container = document.getElementById('journal-history');
+
+            if (history.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 italic text-center py-6 bg-white rounded-2xl border border-blue-100">Hozircha saqlangan yozuvlar mavjud emas. Yozuvlaringiz har bir belgi kiritilganida avtomati saqlanadi!</p>`;
+                return;
+            }
+
+            container.innerHTML = history.map((item, index) => `
+                <div class="bg-white p-5 rounded-2xl border border-blue-100 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <span class="font-bold text-sm text-teal-950 cursor-pointer hover:underline" onclick="selectHistoryDate('${item.date}')">
+                            <i class="fa-regular fa-calendar mr-1.5 text-teal-600"></i>${item.date} ${item.updatedAt ? `<span class="text-xs font-normal text-slate-400">(${item.updatedAt})</span>` : ''}
+                        </span>
+                        <button onclick="deleteJournalEntry(${index})" class="text-xs text-rose-500 hover:text-rose-700 font-semibold no-print">
+                            <i class="fa-solid fa-trash mr-1"></i>O'chirish
+                        </button>
+                    </div>
+                    ${item.istigfor ? `<div class="text-xs"><strong class="text-teal-950">Istig'for va Salovat:</strong> <p class="text-slate-600 mt-0.5 whitespace-pre-line">${escapeHtml(item.istigfor)}</p></div>` : ''}
+                    ${item.shukronalik ? `<div class="text-xs"><strong class="text-teal-950">Shukronalik:</strong> <p class="text-slate-600 mt-0.5 whitespace-pre-line">${escapeHtml(item.shukronalik)}</p></div>` : ''}
+                    ${item.duo ? `<div class="text-xs"><strong class="text-teal-950">Allohga oson duolarim:</strong> <p class="text-slate-600 mt-0.5 whitespace-pre-line">${escapeHtml(item.duo)}</p></div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function selectHistoryDate(date) {
+            document.getElementById('journal-date').value = date;
+            loadJournalForSelectedDate();
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+        }
+
+        function deleteJournalEntry(index) {
+            let history = JSON.parse(localStorage.getItem('allohga_oson_journal') || '[]');
+            history.splice(index, 1);
+            localStorage.setItem('allohga_oson_journal', JSON.stringify(history));
+            loadJournalForSelectedDate();
+            loadJournalHistory();
+        }
+
+        function clearCurrentJournalForm() {
+            document.getElementById('entry-istigfor').value = '';
+            document.getElementById('entry-shukronalik').value = '';
+            document.getElementById('entry-duo').value = '';
+            autoSaveCurrentJournal();
+        }
+
+        // Helper for escaping HTML to prevent injection issues in history logs
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // --- 5. TASBEH COUNTER WITH PERSISTENCE ---
+        function loadTasbehState() {
+            const savedCounts = localStorage.getItem('allohga_oson_tasbeh');
+            if (savedCounts) {
+                try {
+                    currentTasbehCounts = JSON.parse(savedCounts);
+                } catch(e) { currentTasbehCounts = {}; }
+            }
+            updateTasbehDisplay();
+        }
+
+        function saveTasbehState() {
+            localStorage.setItem('allohga_oson_tasbeh', JSON.stringify(currentTasbehCounts));
+        }
+
+        function getCurrentDhikrKey() {
+            return document.getElementById('dhikr-type').value;
+        }
+
+        function onDhikrTypeChange() {
+            updateTasbehDisplay();
+        }
+
+        function updateTasbehDisplay() {
+            const key = getCurrentDhikrKey();
+            const val = currentTasbehCounts[key] || 0;
+            document.getElementById('counter-value').innerText = val;
+        }
+
+        function incrementCounter() {
+            const key = getCurrentDhikrKey();
+            currentTasbehCounts[key] = (currentTasbehCounts[key] || 0) + 1;
+            updateTasbehDisplay();
+            saveTasbehState();
+        }
+
+        function resetCounter() {
+            const key = getCurrentDhikrKey();
+            currentTasbehCounts[key] = 0;
+            updateTasbehDisplay();
+            saveTasbehState();
+        }
+
+        function saveCounterToJournal() {
+            const key = getCurrentDhikrKey();
+            const count = currentTasbehCounts[key] || 0;
+            if (count === 0) return;
+
+            const existingText = document.getElementById('entry-istigfor').value;
+            const newText = existingText 
+                ? `${existingText}\n• ${key}: ${count} ta` 
+                : `• ${key}: ${count} ta`;
+
+            document.getElementById('entry-istigfor').value = newText;
+            autoSaveCurrentJournal();
+            switchTab('journal');
+        }
+    </script>
+</body>
+</html>

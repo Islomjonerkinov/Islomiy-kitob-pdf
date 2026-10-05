@@ -1,0 +1,257 @@
+:root {
+    --bg-soft: #f6f2e8;
+    --bg-cream: #fffdf9;
+    --card-light: rgba(255, 255, 255, 0.8);
+    --card-dark: rgba(9, 44, 35, 0.85);
+    --gold: #d4af37;
+    --gold-strong: #b89228;
+    --emerald-900: #07281f;
+    --emerald-800: #0d3d32;
+    --emerald-700: #125347;
+    --text-dark: #1f2a1f;
+    --text-soft: #5c665e;
+    --line: rgba(212, 175, 55, 0.22);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+                linear-gradient(180deg, #f7f2ea 0%, #eefaf5 100%);
+    color: var(--text-dark);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark body {
+    background: radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 26%),
+                linear-gradient(180deg, #041c15 0%, #0a2a24 100%);
+    color: #f3f1ee;
+}
+
+.islamic-bg {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1.2px, transparent 0);
+    background-size: 24px 24px;
+}
+
+.dark .islamic-bg {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1.2px, transparent 0);
+}
+
+::selection {
+    background: rgba(212, 175, 55, 0.35);
+    color: #0b1b17;
+}
+
+.program-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.8));
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(16px);
+}
+
+.dark .program-card {
+    background: linear-gradient(180deg, rgba(11, 43, 34, 0.92), rgba(6, 28, 22, 0.8));
+    border-color: rgba(212, 175, 55, 0.18);
+    box-shadow: 0 12px 28px rgba(2, 8, 7, 0.35);
+}
+
+.program-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent 45%, rgba(20, 83, 71, 0.06));
+    pointer-events: none;
+}
+
+.program-card:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 30px 44px -20px rgba(212, 175, 55, 0.32);
+    border-color: rgba(212, 175, 55, 0.42);
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, #fef3c7 0%, #facc15 30%, #d4af37 58%, #9a6d14 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-btn {
+    background: linear-gradient(135deg, #facc15 0%, #d4af37 60%, #b89228 100%);
+    box-shadow: 0 16px 24px -12px rgba(212, 175, 55, 0.7);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.gold-gradient-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 30px -12px rgba(212, 175, 55, 0.82);
+    filter: brightness(1.04);
+}
+
+@keyframes pulseSoft {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.75;
+        transform: scale(1.08);
+    }
+}
+
+.ambient-glow {
+    animation: pulseSoft 5s infinite ease-in-out;
+    filter: blur(8px);
+}
+
+.modal-show {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.portal-page {
+    --portal-gold: #d4af37;
+    --portal-green: #07281f;
+    min-height: 100vh;
+}
+
+.portal-header {
+    background: rgba(4, 28, 21, 0.94);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+    padding: 16px max(20px, calc((100vw - 1160px) / 2));
+}
+
+.portal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 14px;
+}
+
+.portal-nav a,
+.portal-back {
+    color: #fde68a;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.portal-nav a:hover,
+.portal-back:hover {
+    color: white;
+}
+
+.portal-main {
+    width: min(100% - 32px, 900px);
+    margin: 0 auto;
+    padding: 52px 0 72px;
+}
+
+.portal-panel {
+    margin-top: 24px;
+    padding: clamp(20px, 4vw, 32px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 18px;
+    background: rgba(7, 40, 31, 0.8);
+}
+.portal-eyebrow {
+    color: #facc15;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.portal-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid rgba(250, 204, 21, 0.55);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #facc15, #b89228);
+    color: #041c15;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.portal-button:hover {
+    filter: brightness(1.08);
+}
+
+.portal-button-secondary {
+    background: transparent;
+    color: #fde68a;
+}
+
+.portal-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 10px;
+    background: rgba(4, 28, 21, 0.8);
+    color: #fff;
+    font: inherit;
+}
+
+.portal-input:focus {
+    outline: 2px solid #d4af37;
+    outline-offset: 2px;
+}
+
+.journal-entry {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.journal-entry time {
+    color: #facc15;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.journal-entry p {
+    margin-top: 6px;
+    white-space: pre-wrap;
+}
+
+.portal-progress {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: rgba(4, 28, 21, 0.9);
+}
+
+.portal-progress > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #b89228, #fde047);
+    transition: width 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .program-card,
+    .gold-gradient-btn,
+    .ambient-glow {
+        transition: none;
+        animation: none;
+    }
+}

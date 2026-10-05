@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>40 ming istig'for kundaligi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0a231c;
+      --accent-green: #2d6a4f;
+      --light-green: #d8f3dc;
+      --text-dark: #1b4332;
+      --mint-bg: #e8f5e9;
+      --gold: #d4af37;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #061813;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, #0a231c 0%, #1b4332 100%);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .nav-pills .nav-link {
+      color: var(--light-green);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-pills .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: var(--gold);
+      color: #0a231c;
+      font-weight: 700;
+    }
+
+    .journal-page {
+      background-color: var(--mint-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid var(--accent-green);
+      padding: 30px;
+      position: relative;
+      min-height: 700px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .inner-border {
+      border: 2px solid var(--accent-green);
+      border-radius: 10px;
+      padding: 25px;
+      height: 100%;
+      background-color: #f7fcf9;
+    }
+
+    .page-title {
+      font-family: 'Cinzel', serif;
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .cover-card {
+      background: linear-gradient(160deg, #0d2c22 0%, #061813 100%);
+      border-radius: 20px;
+      border: 3px solid var(--gold);
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cover-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .custom-input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px dashed var(--accent-green);
+      border-radius: 0;
+      padding: 5px 10px;
+      color: var(--text-dark);
+      font-weight: 600;
+ ;        }
+
+    .ruled-textarea {
+      background: repeating-linear-gradient(transparent, transparent 31px, #b7e4c7 31px, #b7e4c7 32px);
+      line-height: 32px;
+      border: none;
+      color: #1b4332;
+      font-size: 1.05rem;
+      font-weight: 500;
+      padding: 0 10px;
+    }
+
+    .benefit-item {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: #2d3748;
+    }
+
+    .benefit-item::before {
+      content: "•";
+      position: absolute;
+      left: 10px;
+      color: var(--accent-green);
+      font-size: 1.5rem;
+    }
+
+    .tracker-table th {
+      background-color: #2d6a4f;
+      color: #fff;
+      text-align: center;
+    }
+
+    .tracker-input {
+      border: none;
+      background: transparent;
+      text-align: center;
+      width: 100%;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .digital-tasbih {
+      background: linear-gradient(145deg, #12352b, #0a231c);
+      border: 3px solid var(--gold);
+      border-radius: 25px;
+      padding: 30px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .counter-display {
+      font-family: 'Cinzel', monospace;
+      font-size: 4rem;
+      background: #040e0b;
+      color: #52b788;
+      border-radius: 12px;
+      padding: 15px;
+      border: 2px solid #2d6a4f;
+      margin: 20px 0;
+    }
+    .btn-counter {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #d4af37, #997b15);
+      border: 4px solid #fff;
+      color: #0a231c;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn-counter:active {
+      transform: scale(0.92);
+    }
+  </style>
+</head>
+<body class="py-4">
+
+  <!-- Header Navigation -->
+  <div class="container mb-4" style="max-width: 850px;">
+    <div class="app-header p-3 rounded-4 d-flex flex-wrap justify-content-between align-items-center shadow">
+      <div class="d-flex align-items-center mb-2 mb-md-0">
+        <i class="bi bi-journal-bookmark-fill text-warning fs-3 me-2"></i>
+        <h5 class="m-0 text-white font-weight-bold">40 Ming Istig'for</h5>
+      </div>
+
+      <ul class="nav nav-pills" id="pageTabs">
+        <li class="nav-item"><button class="nav-link active" onclick="switchTab('page1', this)"><i class="bi bi-book"></i> Muqova</button></li>
+        <li class="nav-item"><button class="nav-link" onclick="switchTab('page2', this)"><i class="bi bi-person"></i> Ma'lumot</button></li>
+        <li class="nav-item"><button class="nav-link" onclick="switchTab('page3', this)"><i class="bi bi-stars"></i> Foydalari</button></li>
+        <li class="nav-item"><button class="nav-link" onclick="switchTab('page4', this)"><i class="bi bi-heart"></i> Niyat</button></li>
+        <li class="nav-item"><button class="nav-link" onclick="switchTab('page5', this)"><i class="bi bi-table"></i> Jadval</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container mb-4" style="max-width: 850px;">
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      <a class="btn btn-sm btn-outline-success" href="index.html"><i class="bi bi-house"></i> Bosh sahifa</a>
+      <a class="btn btn-sm btn-outline-success" href="40_Ming_istiqfor.html"><i class="bi bi-journal-text"></i> 40 ming</a>
+      <a class="btn btn-sm btn-outline-success" href="40_Kunlik%20_voqea.html"><i class="bi bi-book"></i> 40 kunlik voqea</a>
+      <a class="btn btn-sm btn-outline-success" href="Allohga_Oson.html"><i class="bi bi-heart-pulse"></i> Allohga oson</a>
+      <a class="btn btn-sm btn-outline-success" href="Tahajjud_Daftarim.html"><i class="bi bi-moon-stars"></i> Tahajjud</a>
+    </div>
+  </div>
+
+  <!-- Overall Progress Banner -->
+  <div class="container mb-4" style="max-width: 850px;">
+    <div class="card bg-dark text-white border-warning p-3 shadow-sm rounded-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="fw-bold text-warning"><i class="bi bi-trophy"></i> Umumiy Maqsad Progressi:</span>
+        <span class="fw-bold fs-5 text-light" id="progressText">0 / 40,000</span>
+      </div>
+      <div class="progress" style="height: 20px;">
+        <div class="progress-bar bg-warning text-dark fw-bold" id="progressBar" role="progressbar" style="width: 0%">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Pages Container -->
+  <div class="container" style="max-width: 850px;">
+    
+    <!-- PAGE 1: COVER -->
+    <div class="page-content" id="page1">
+      <div class="cover-card">
+        <div class="py-4">
+          <h1 class="cover-title">40 ming istig'for</h1>
+          <div class="fs-2 text-warning mb-4">kundaligi</div>
+          <p class="text-light opacity-75">Qalb xotirjamligi va yopiq eshiklarning kaliti</p>
+          <button class="btn btn-warning btn-lg px-4 font-weight-bold shadow-lg mt-3" onclick="switchTabById('page2')">
+            Kundalikni Boshlash <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- PAGE 2: USER INFO -->
+    <div class="page-content d-none" id="page2">
+      <div class="journal-page">
+        <div class="inner-border">
+          <h4 class="page-title text-center mb-4"><i class="bi bi-person-badge"></i> KUNDALIK EGASI HAQIDA MA'LUMOT</h4>
+          <div class="mb-3">
+            <label class="fw-bold text-dark">Ismi sharifi:</label>
+            <input type="text" id="userName" class="form-control custom-input" placeholder="Ismingizni kiriting..." oninput="saveUserData()">
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6 mb-2">
+              <label class="fw-bold text-dark">Safar boshlangan sana:</label>
+              <input type="date" id="startDate" class="form-control custom-input" onchange="saveUserData()">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="fw-bold text-dark">Mo'ljallangan yakuniy sana:</label>
+              <input type="date" id="endDate" class="form-control custom-input" onchange="saveUserData()">
+            </div>
+          </div>
+          <div class="p-3 bg-white rounded border border-success mb-4 text-center">
+            <span class="fw-bold text-success fs-5">Umumiy maqsad: 40 000 (Qirq ming) marotaba istig'for.</span>
+          </div>
+          <h5 class="page-title text-center my-3"><i class="bi bi-bullseye"></i> NIYAT VA MAQSADLARIM</h5>
+          <textarea id="userGoals" class="form-control ruled-textarea" rows="5" placeholder="Niyatlaringizni yozing..." oninput="saveUserData()"></textarea>
+          
+          <div class="text-end mt-4">
+            <button class="btn btn-success" onclick="switchTabById('page3')">Keyingi sahifa <i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: BENEFITS -->
+    <div class="page-content d-none" id="page3">
+      <div class="journal-page">
+        <div class="inner-border">
+          <h4 class="page-title text-center mb-3">ISTIG'FORNING FOYDALARI</h4>
+          <div class="p-3 bg-white rounded border mb-3">
+            <p class="m-0 text-dark"><strong>40 ming istig'forni niyat qilish va uni muntazam aytish</strong> – inson hayotida ma'naviy va moddiy ulkan o'zgarishlarga sabab bo'ladi.</p>
+          </div>
+          <div class="benefit-item"><strong>Rizq barakasi:</strong> Kutilmagan joydan rizq kelishi.</div>
+          <div class="benefit-item"><strong>Farzand va nasl:</strong> Farzand talabida bo'lganlar uchun tavsiya etiladi.</div>
+          <div class="benefit-item"><strong>Xotirjamlik:</strong> Qalbda yig'ilib qolgan siqilish tarqaydi.</div>
+          <div class="benefit-item"><strong>Duo ijobati:</strong> Ko'p istig'for aytuvchining duolari kabul bo'ladi.</div>
+          
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-secondary" onclick="switchTabById('page2')"><i class="bi bi-arrow-left"></i> Orqaga</button>
+            <button class="btn btn-success" onclick="switchTabById('page4')">Keyingi sahifa <i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PAGE 4: INTENTION -->
+    <div class="page-content d-none" id="page4">
+      <div class="journal-page">
+        <div class="inner-border">
+          <h4 class="page-title text-center text-danger mb-4"><i class="bi bi-brightness-high"></i> NIYATNI QANDAY QILISH KERAK?</h4>
+          <div class="card mb-3 border-start border-4 border-success p-3">
+            <h6><strong>1. Ixlos:</strong> "Ey Allohim, faqat Sening roziliging uchun 40 ming istig'for aytishni niyat qildim".</h6>
+          </div>
+          <div class="card mb-3 border-start border-4 border-warning p-3">
+            <h6><strong>2. Muayyan maqsad:</strong> Hojat va niyatlaringizni qo'shing.</h6>
+          </div>
+          <div class="card mb-3 border-start border-4 border-info p-3">
+            <h6><strong>3. Tavba:</strong> O'tmishdagi xatolaringizni eslab qalban afsuslaning.</h6>
+          </div>
+          <div class="text-center mt-4">
+            <button class="btn btn-success btn-lg px-4" onclick="switchTabById('page5')">
+              <i class="bi bi-pencil-square"></i> Jadvalni To'ldirishga O'tish
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 5: TRACKER TABLE -->
+    <div class="page-content d-none" id="page5">
+      <div class="journal-page">
+        <div class="inner-border">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="page-title m-0"><i class="bi bi-calendar-check"></i> ISTIG'FOR HISOBI JADVALI</h4>
+            <button class="btn btn-success btn-sm" onclick="addNewRow()"><i class="bi bi-plus-lg"></i> Qator qo'shish</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered tracker-table">
+              <thead>
+                <tr>
+                  <th>NO.</th>
+                  <th>SANA</th>
+                  <th>ASTAG'FIRULLOH (1)</th>
+                  <th>ASTAG'FIRULLOH (2)</th>
+                  <th>ASTAG'FIRULLOH (3)</th>
+                  <th>JAMI</th>
+                </tr>
+              </thead>
+              <tbody id="trackerTableBody">
+                <!-- Rows dynamically added -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+            <span class="fw-bold">Jadval bo'yicha jami:</span>
+            <span class="fs-5 fw-bold text-success" id="tableTotalCount">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DIGITAL TASBIH MODAL -->
+  <div class="modal fade" id="tasbihModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-transparent border-0">
+        <div class="digital-tasbih">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="m-0 text-warning"><i class="bi bi-disc"></i> Raqamli Tasbeh</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="counter-display" id="modalCounterDisplay">0000</div>
+          
+          <div class="my-3">
+            <button class="btn-counter" onclick="incrementCounter()">BOSING</button>
+          </div>
+          
+          <button class="btn btn-outline-danger btn-sm mb-3" onclick="resetCounter()">Nolga tenglashtirish</button>
+
+          <div class="p-2 bg-dark rounded border border-secondary">
+            <label class="small text-light d-block mb-1">Jadvalga saqlash (Sana):</label>
+            <div class="input-group input-group-sm">
+              <input type="date" id="tasbihTargetDate" class="form-control">
+              <button class="btn btn-warning" onclick="addTasbihToTable()">Saqlash</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+  <script>
+    const STORAGE_KEY = '40k_istigfor_data';
+    let appData = {
+      userInfo: { name: '', startDate: '', endDate: '', goals: '' },
+      rows: [
+        { date: '', c1: '', c2: '', c3: '' },
+        { date: '', c1: '', c2: '', c3: '' },
+        { date: '', c1: '', c2: '', c3: '' }
+      ],
+      counter: 0
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadData();
+      renderTable();
+      updateProgress();
+      document.getElementById('tasbihTargetDate').valueAsDate = new Date();
+    });
+
+    function switchTab(pageId, btnElement) {
+      document.querySelectorAll('.page-content').forEach(el => el.classList.add('d-none'));
+      document.getElementById(pageId).classList.remove('d-none');
+      
+      document.querySelectorAll('#pageTabs .nav-link').forEach(btn => btn.classList.remove('active'));
+      if(btnElement) btnElement.classList.add('active');
+    }
+
+    function switchTabById(pageId) {
+      const targetIndex = parseInt(pageId.replace('page', '')) - 1;
+      const navButtons = document.querySelectorAll('#pageTabs .nav-link');
+      switchTab(pageId, navButtons[targetIndex]);
+    }
+
+    function loadData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) appData = JSON.parse(saved);
+
+      document.getElementById('userName').value = appData.userInfo.name || '';
+      document.getElementById('startDate').value = appData.userInfo.startDate || '';
+      document.getElementById('endDate').value = appData.userInfo.endDate || '';
+      document.getElementById('userGoals').value = appData.userInfo.goals || '';
+      document.getElementById('modalCounterDisplay').innerText = String(appData.counter || 0).padStart(4, '0');
+    }
+
+    function saveUserData() {
+      appData.userInfo.name = document.getElementById('userName').value;
+      appData.userInfo.startDate = document.getElementById('startDate').value;
+      appData.userInfo.endDate = document.getElementById('endDate').value;
+      appData.userInfo.goals = document.getElementById('userGoals').value;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('trackerTableBody');
+      tbody.innerHTML = '';
+
+      appData.rows.forEach((row, i) => {
+        const total = (parseInt(row.c1)||0) + (parseInt(row.c2)||0) + (parseInt(row.c3)||0);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="text-center font-weight-bold">${i + 1}</td>
+          <td><input type="date" class="tracker-input" value="${row.date || ''}" onchange="updateRow(${i}, 'date', this.value)"></td>
+          <td><input type="number" class="tracker-input" value="${row.c1 || ''}" oninput="updateRow(${i}, 'c1', this.value)"></td>
+          <td><input type="number" class="tracker-input" value="${row.c2 || ''}" oninput="updateRow(${i}, 'c2', this.value)"></td>
+          <td><input type="number" class="tracker-input" value="${row.c3 || ''}" oninput="updateRow(${i}, 'c3', this.value)"></td>
+          <td class="text-center fw-bold text-success">${total}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateProgress();
+    }
+
+    function updateRow(index, field, value) {
+      appData.rows[index][field] = value;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      renderTable();
+    }
+
+    function addNewRow() {
+      appData.rows.push({ date: '', c1: '', c2: '', c3: '' });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      renderTable();
+    }
+
+    function updateProgress() {
+      let grandTotal = 0;
+      appData.rows.forEach(r => {
+        grandTotal += (parseInt(r.c1)||0) + (parseInt(r.c2)||0) + (parseInt(r.c3)||0);
+      });
+
+      const percent = Math.min(Math.round((grandTotal / 40000) * 100), 100);
+      document.getElementById('tableTotalCount').innerText = grandTotal.toLocaleString();
+      document.getElementById('progressText').innerText = `${grandTotal.toLocaleString()} / 40,000`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+      document.getElementById('progressBar').innerText = `${percent}%`;
+    }
+
+    function incrementCounter() {
+      appData.counter = (appData.counter || 0) + 1;
+      document.getElementById('modalCounterDisplay').innerText = String(appData.counter).padStart(4, '0');
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    function resetCounter() {
+      appData.counter = 0;
+      document.getElementById('modalCounterDisplay').innerText = '0000';
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    function addTasbihToTable() {
+      const date = document.getElementById('tasbihTargetDate').value;
+      const val = appData.counter;
+      if (!val) return alert("Sanoq 0 ga teng!");
+
+      let row = appData.rows.find(r => r.date === date) || appData.rows.find(r => !r.date);
+      if (!row) {
+        row = { date: date, c1: '', c2: '', c3: '' };
+        appData.rows.push(row);
+      }
+      row.date = date;
+      if (!row.c1) row.c1 = val;
+      else if (!row.c2) row.c2 = val;
+      else row.c3 = (parseInt(row.c3)||0) + val;
+
+      resetCounter();
+      renderTable();
+      alert("Jadvalga saqlandi!");
+    }
+  </script>
+</body>
+</html>
